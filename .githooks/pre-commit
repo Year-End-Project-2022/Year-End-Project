@@ -2,7 +2,7 @@
 
 echo "Exécution pre-commit :\n"
 
-if coverage run manage.py test; then
+if coverage run ./app/manage.py test ./app; then
     echo "OK TEST"
 else
     exit 1
@@ -17,30 +17,30 @@ else
     open -a safari "./htmlcov/index.html"
 fi
 
-prospector --strictness veryhigh site_labouest
+prospector --strictness veryhigh app/app
 
-if prospector --strictness high site_labouest; then
-    echo "OK prospector site_labouest"
+if prospector --strictness high app/app; then
+    echo "OK prospector app/app"
 else
     exit 1
 fi
 
-prospector --strictness veryhigh formulaire_outils
+prospector --strictness veryhigh app/formulaire_outils
 
-if prospector --strictness high formulaire_outils; then
-    echo "OK prospector formulaire_outils"
+if prospector --strictness high app/formulaire_outils; then
+    echo "OK prospector app/formulaire_outils"
 else
     exit 1
 fi
 
-if bandit -r formulaire_outils; then
-    echo "OK Bandi formulaire_outils"
+if bandit -r app/formulaire_outils; then
+    echo "OK Bandi app/formulaire_outils"
 else
     exit 1
 fi
 
-if bandit -r site_labouest; then
-    echo "OK Bandi site_labouest"
+if bandit -r app/site_labouest; then
+    echo "OK Bandi app/site_labouest"
 else
     exit 1
 fi
