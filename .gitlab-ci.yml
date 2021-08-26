@@ -1,0 +1,31 @@
+image: python:latest
+
+cache:
+  paths:
+    - ~/.cache/pip/
+
+before_script:
+  - python -V 
+  - pip install -r requirements.txt
+  - pip install -r localRequirement.txt
+
+stages:
+  - test
+  - bandit
+  - prospector
+
+
+test:
+  stage: test
+  script:
+    - python manage.py test
+
+bandit:formulaire_outils:
+  stage: bandit
+  script:
+    - bandit -r formulaire_outils
+
+prospector:formulaire_outils:
+  stage: prospector
+  script:
+    - prospector --strictness high formulaire_outils
