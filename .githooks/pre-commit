@@ -1,0 +1,48 @@
+#!/bin/sh
+
+echo "Exécution pre-commit :\n"
+
+if coverage run manage.py test; then
+    echo "OK TEST"
+else
+    exit 1
+fi
+coverage html
+
+if brave-browser; then
+    brave-browser "./htmlcov/index.html"
+elif firefox; then
+    firefox ./htmlcov/index.html
+else
+    open -a safari "./htmlcov/index.html"
+fi
+
+prospector --strictness veryhigh site_labouest
+
+if prospector --strictness high site_labouest; then
+    echo "OK prospector site_labouest"
+else
+    exit 1
+fi
+
+prospector --strictness veryhigh formulaire_outils
+
+if prospector --strictness high formulaire_outils; then
+    echo "OK prospector formulaire_outils"
+else
+    exit 1
+fi
+
+if bandit -r formulaire_outils; then
+    echo "OK Bandi formulaire_outils"
+else
+    exit 1
+fi
+
+if bandit -r site_labouest; then
+    echo "OK Bandi site_labouest"
+else
+    exit 1
+fi
+
+
