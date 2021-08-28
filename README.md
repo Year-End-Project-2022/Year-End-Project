@@ -21,6 +21,8 @@ puis faire `./manage.py makemigrations` et `./manage.py migrate` pour crée les 
 
 pour finir lancer le serveur avec la commande `./manage.py runserver`
 
+pour git les hooks son dans .githook (commande pour changé le chemin par defaut : `git config.core.hooksPath .githooks`)
+
 Le projet tourne aussi avec docker il faut avoir `docker` et `docker-compose` d'installer et fonctionnel pour le faire fonctionner avec.
 
 Le `docker-compose.yml` sert pour le développement il utilise la base sqlite par défaut n'a pas de proxy et fonctionne avec le debug activer
