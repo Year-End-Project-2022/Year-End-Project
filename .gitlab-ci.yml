@@ -1,4 +1,4 @@
-image: python:latest
+image: python:3.9-alpine
 
 cache:
   paths:
@@ -18,7 +18,7 @@ stages:
 test:
   stage: test
   script:
-    - python manage.py test
+    - python app/manage.py test
 
 bandit:formulaire_outils:
   stage: bandit
