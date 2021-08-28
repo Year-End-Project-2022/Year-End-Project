@@ -1,5 +1,8 @@
 image: python:3.9-alpine
 
+variables:
+  DEBUG: "1"
+
 cache:
   paths:
     - ~/.cache/pip/
