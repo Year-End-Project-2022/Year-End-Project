@@ -28,9 +28,9 @@ test:
 bandit:formulaire_outils:
   stage: bandit
   script:
-    - bandit -r formulaire_outils
+    - bandit -r app/formulaire_outils
 
 prospector:formulaire_outils:
   stage: prospector
   script:
-    - prospector --strictness high formulaire_outils
+    - prospector --strictness high app/formulaire_outils
