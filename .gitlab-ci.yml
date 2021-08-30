@@ -45,7 +45,7 @@ build:
     - docker-compose build
     - docker-compose push
   tags:
-    - localServeur
+    - localServer
 
 deploy:
   stage: deploy
