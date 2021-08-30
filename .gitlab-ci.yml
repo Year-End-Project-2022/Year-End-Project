@@ -15,9 +15,9 @@ before_script:
   - pip install -r localRequirement.txt
 
 stages:
-  - test
-  - bandit
-  - prospector
+  #- test
+  #- bandit
+  #- prospector
   - build
   - deploy
 
