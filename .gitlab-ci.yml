@@ -17,10 +17,9 @@ before_script:
 stages:
   - build
   - deploy
-
-  #- test
-  #- bandit
-  #- prospector
+  - test
+  - bandit
+  - prospector
 
 
 test:
