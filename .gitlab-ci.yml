@@ -12,7 +12,6 @@ before_script:
   - apk add --update --no-cache --virtual .tmp gcc libc-dev linux-headers
   - apk add --update --no-cache --virtual python3-dev jpeg-dev zlib-dev postgresql-dev gcc python3-dev musl-dev
   - pip install -r requirements.txt
-  - pip install -r localRequirement.txt
 
 stages:
   - build
@@ -25,16 +24,19 @@ stages:
 test:
   stage: test
   script:
+    - pip install -r localRequirement.txt
     - python app/manage.py test ./app
 
 bandit:formulaire_outils:
   stage: bandit
   script:
+    - pip install -r localRequirement.txt
     - bandit -r app/formulaire_outils
 
 prospector:formulaire_outils:
   stage: prospector
   script:
+    - pip install -r localRequirement.txt
     - prospector --strictness high app/formulaire_outils
 
 build:
@@ -50,8 +52,7 @@ deploy:
   script:
     - docker stack deploy --compose-file docker-compose-deploy.yml
   tags:
-    - localServeur
+    - localServer
   # only:
   #  - master
 
-  
