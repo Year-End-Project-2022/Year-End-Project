@@ -7,11 +7,11 @@ cache:
   paths:
     - ~/.cache/pip/
 
-before_script:
-  - python -V
-  - apk add --update --no-cache --virtual .tmp gcc libc-dev linux-headers
-  - apk add --update --no-cache --virtual python3-dev jpeg-dev zlib-dev postgresql-dev gcc python3-dev musl-dev
-  - pip install -r requirements.txt
+#before_script:
+#  - python -V
+#  - apk add --update --no-cache --virtual .tmp gcc libc-dev linux-headers
+#  - apk add --update --no-cache --virtual python3-dev jpeg-dev zlib-dev postgresql-dev gcc python3-dev musl-dev
+#  - pip install -r requirements.txt
 
 stages:
   - build
