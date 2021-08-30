@@ -42,6 +42,8 @@ build:
   script:
     - docker-compose -f build
     - docker-compose -f push
+  tags:
+    - localServeur
 
 deploy:
   stage: deploy
