@@ -40,8 +40,8 @@ prospector:formulaire_outils:
 build:
   stage: build
   script:
-    - docker-compose -f build
-    - docker-compose -f push
+    - docker-compose build
+    - docker-compose push
   tags:
     - localServeur
 
@@ -53,4 +53,3 @@ deploy:
     - localServeur
   # only:
   #  - master
-  
