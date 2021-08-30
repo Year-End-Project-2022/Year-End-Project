@@ -40,8 +40,8 @@ prospector:formulaire_outils:
 build:
   stage: build
   script:
-    - docker-compose -f docker-compose-deploy.yml build
-    - docker-compose -f docker-compose-deploy.yml push
+    - docker-compose -f build
+    - docker-compose -f push
 
 deploy:
   stage: deploy
