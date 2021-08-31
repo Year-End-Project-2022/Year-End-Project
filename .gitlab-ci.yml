@@ -10,7 +10,7 @@ test:
   script:
     - echo run tests in this section
   tags:
-    - localServer
+    - localServeur
 
 step-deploy-prod:
   stage: deploy
@@ -19,4 +19,4 @@ step-deploy-prod:
     #- pip3 install docker-compose
     - docker-compose up -d --build
   tags:
-    - localServer
+    - localServeur
