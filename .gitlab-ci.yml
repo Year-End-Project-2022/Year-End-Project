@@ -1,36 +1,21 @@
-image: python:3.9-alpine
+image: docker
 
-variables:
-  DEBUG: "1"
-
-cache:
-  paths:
-    - ~/.cache/pip/
-
-before_script:
-  - python -V
-  - apk add --update --no-cache --virtual .tmp gcc libc-dev linux-headers
-  - apk add --update --no-cache --virtual python3-dev jpeg-dev zlib-dev postgresql-dev gcc python3-dev musl-dev
-  - pip install -r requirements.txt
-  - pip install -r localRequirement.txt
+services:
+  - docker:dind
 
 stages:
   - test
-  - bandit
-  - prospector
-
+  - deploy
 
 test:
   stage: test
   script:
-    - python app/manage.py test ./app
+    - echo run tests in this section
 
-bandit:formulaire_outils:
-  stage: bandit
+step-deploy-prod:
+  stage: deploy
   script:
-    - bandit -r app/formulaire_outils
-
-prospector:formulaire_outils:
-  stage: prospector
-  script:
-    - prospector --strictness high app/formulaire_outils
+    - sudo apt-get install -y python-pip
+    - pip install docker-compose
+    - docker-compose up -d --build
+  when: manual
