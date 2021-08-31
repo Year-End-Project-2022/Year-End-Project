@@ -2,17 +2,10 @@ before_script:
   - docker info
 
 stages:
-  - test
   - deploy
 
-test:
-  stage: test
-  script:
-    - echo run tests in this section
-  tags:
-    - localServeur
 
-step-deploy-prod:
+step-deploy-test:
   stage: deploy
   script:
     - docker-compose up -d --build
