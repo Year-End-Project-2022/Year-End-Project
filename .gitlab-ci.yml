@@ -9,6 +9,8 @@ test:
   stage: test
   script:
     - echo run tests in this section
+  tags:
+    - localServer
 
 step-deploy-prod:
   stage: deploy
