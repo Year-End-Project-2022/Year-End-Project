@@ -1,7 +1,5 @@
-image: docker
-
-services:
-  - docker:dind
+before_script:
+  - docker info
 
 stages:
   - test
@@ -18,4 +16,3 @@ step-deploy-prod:
     #- yum install -y pytho3-pip
     #- pip3 install docker-compose
     - docker-compose up -d --build
-  when: manual
