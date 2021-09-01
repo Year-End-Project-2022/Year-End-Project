@@ -32,12 +32,26 @@ bandit:formulaire_outils:
   script:
     - bandit -r app/formulaire_outils
 
+bandit:site_web:
+  extends: .before_script_template
+  image: python:3.9-alpine
+  stage: bandit
+  script:
+    - bandit -r app/site_web
+
 prospector:formulaire_outils:
   extends: .before_script_template
   image: python:3.9-alpine
   stage: prospector
   script:
     - prospector --strictness high app/formulaire_outils
+
+prospector:site_web:
+  extends: .before_script_template
+  image: python:3.9-alpine
+  stage: prospector
+  script:
+    - prospector --strictness high app/site_web
 
 step-deploy-test:
     stage: deploy
@@ -47,3 +61,4 @@ step-deploy-test:
       - localServeur
     only:
       - dev
+      - master

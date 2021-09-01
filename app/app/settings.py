@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'vide')
 
-if SECRET_KEY == 'vide':
+if SECRET_KEY == 'vide':  # nosec
     SECRET_KEY = utils.get_random_secret_key()
     os.environ["SECRET_KEY"] = SECRET_KEY
 
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'formulaire_outils.apps.FormulaireOutilsConfig',
+    'site_web.apps.SiteWebConfig',
 ]
 
 MIDDLEWARE = [
