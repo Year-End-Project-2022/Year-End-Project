@@ -42,6 +42,8 @@ prospector:formulaire_outils:
 step-deploy-test:
     stage: deploy
     script:
-        - docker-compose -f docker-compose-deploy.yml up -d --build
+      - docker-compose -f docker-compose-deploy.yml up -d --build
     tags:
-        - localServeur
+      - localServeur
+    only:
+    - dev
