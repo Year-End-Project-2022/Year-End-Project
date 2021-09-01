@@ -2,8 +2,31 @@ before_script:
   - docker info
 
 stages:
+  - test
+  - bandit
+  - prospector
   - deploy
 
+test:
+  image: python:3.9-alpine
+  stage: test
+  script:
+    - pip install -r localRequirement.txt
+    - python app/manage.py test ./app
+
+bandit:formulaire_outils:
+  image: python:3.9-alpine
+  stage: bandit
+  script:
+    - pip install -r localRequirement.txt
+    - bandit -r app/formulaire_outils
+
+prospector:formulaire_outils:
+  image: python:3.9-alpine
+  stage: prospector
+  script:
+    - pip install -r localRequirement.txt
+    - prospector --strictness high app/formulaire_outils
 
 step-deploy-test:
   stage: deploy
