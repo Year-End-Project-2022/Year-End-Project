@@ -1,39 +1,36 @@
+image: python:3.9-alpine
+
+variables:
+  DEBUG: "1"
+
+cache:
+  paths:
+    - ~/.cache/pip/
+
 before_script:
   - python -V
   - apk add --update --no-cache --virtual .tmp gcc libc-dev linux-headers
   - apk add --update --no-cache --virtual python3-dev jpeg-dev zlib-dev postgresql-dev gcc python3-dev musl-dev
   - pip install -r requirements.txt
   - pip install -r localRequirement.txt
+
 stages:
   - test
   - bandit
   - prospector
-  - deploy
+
 
 test:
-  image: python:3.9-alpine
   stage: test
   script:
-    - pip install -r localRequirement.txt
     - python app/manage.py test ./app
 
 bandit:formulaire_outils:
-  image: python:3.9-alpine
   stage: bandit
   script:
-    - pip install -r localRequirement.txt
     - bandit -r app/formulaire_outils
 
 prospector:formulaire_outils:
-  image: python:3.9-alpine
   stage: prospector
   script:
-    - pip install -r localRequirement.txt
     - prospector --strictness high app/formulaire_outils
-
-step-deploy-test:
-  stage: deploy
-  script:
-    - docker-compose -f docker-compose-deploy.yml up -d --build
-  tags:
-    - localServeur
