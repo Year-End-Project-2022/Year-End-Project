@@ -36,7 +36,7 @@ if ALLOWED_HOSTS_ENV:
     ALLOWED_HOSTS.extend(ALLOWED_HOSTS_ENV.split(','))
 
 if DEBUG:
-    ALLOWED_HOSTS = [*]
+    ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
