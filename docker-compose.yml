@@ -10,6 +10,5 @@ services:
       - ./app:/app
     command: sh -c "python manage.py runserver 0.0.0.0:8000"
     environment:
-      - DELITE=1
       - DEBUG=1
       - ALLOWED_HOSTS=localhost,*,192.168.241.112

@@ -35,6 +35,8 @@ ALLOWED_HOSTS_ENV = os.environ.get('ALLOWED_HOSTS')
 if ALLOWED_HOSTS_ENV:
     ALLOWED_HOSTS.extend(ALLOWED_HOSTS_ENV.split(','))
 
+if DEBUG:
+    ALLOWED_HOSTS = [*]
 
 # Application definition
 
@@ -82,9 +84,7 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DBLITE = bool(int(os.environ.get('DBLITE', 0)))
-
-if DBLITE:
+if DEBUG:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
