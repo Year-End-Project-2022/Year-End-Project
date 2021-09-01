@@ -8,6 +8,6 @@ stages:
 step-deploy-test:
   stage: deploy
   script:
-    - docker-compose up -d --build #-f docker-compose-deploy.yml
+    - docker-compose up -f docker-compose-deploy.yml -d --build
   tags:
     - localServeur
