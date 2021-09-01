@@ -18,7 +18,7 @@ stages:
   - test
   - bandit
   - prospector
-
+  - deploy
 
 test:
   stage: test
@@ -34,3 +34,10 @@ prospector:formulaire_outils:
   stage: prospector
   script:
     - prospector --strictness high app/formulaire_outils
+
+step-deploy-test:
+    stage: deploy
+    script:
+        - docker-compose -f docker-compose-deploy.yml up -d --build
+    tags:
+        - localServeur
