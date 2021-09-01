@@ -11,3 +11,7 @@ def news(request):
 
 def ateliers(request):
     return render(request, 'site_web/ateliers.html')
+
+
+def about(request):
+    return render(request, 'site_web/about.html')
