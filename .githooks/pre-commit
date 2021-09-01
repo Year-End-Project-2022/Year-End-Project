@@ -2,6 +2,7 @@
 
 echo "Exécution pre-commit :\n"
 export DEBUG=1
+export DBLITE=1
 if coverage run ./app/manage.py test ./app; then
     echo "OK TEST"
 else

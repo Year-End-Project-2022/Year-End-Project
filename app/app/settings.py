@@ -82,7 +82,9 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-if DEBUG:
+DBLITE = bool(int(os.environ.get('DBLITE', 0)))
+
+if DBLITE:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
