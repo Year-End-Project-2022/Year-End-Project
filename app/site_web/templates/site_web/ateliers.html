@@ -1,0 +1,23 @@
+{% extends 'site_web/base.html'%}
+{% load static %}
+
+{% block titre %}Lab-Ouest Ateliers{% endblock %}
+
+{% block body %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+    crossorigin="anonymous"></script>
+
+<div class="card text-center mx-auto my-3 w-75 border-0">
+    <img src="{% static 'img/logo_index.jpg' %}" class="card-img-top" alt="Logo INDEX">
+</div>
+
+<div class="w-50 mx-auto text-center">
+    <h1 class="titre text-center my-5 ml-5">LES ATELIERS DU FABLAB</h1>
+</div>
+
+<div class="w-75 mx-auto corps">
+
+    <h5 class="mx-auto text-center my-3">Voir <a href="calendrier">le Calendrier des Ateliers</a></h5>
+
+    {% endblock %}
