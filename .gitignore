@@ -322,3 +322,5 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/linux,django,python,windows,sublimetext,visualstudiocode,git
 
 db/
+
+app/static/img/galerie/*
