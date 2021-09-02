@@ -1,0 +1,54 @@
+{% extends 'site_web/base.html'%}
+{% load static %}
+
+{% block titre %}Lab-Ouest Tarifs{% endblock %}
+
+{% block body %}
+<div class="w-75 mx-auto corps">
+    <div class="card text-center mx-auto my-5 w-75 border-0">
+        <img src="{% static 'img/logo_index.jpg' %}" class="card-img-top" alt="Logo INDEX">
+    </div>
+
+    <h1 class="text-center mx-auto my-3 titre">LES TARIFS</h1>
+    <h4 class="text-center mx-auto my-3">Le Lab-Ouest est une association, il faut donc s'acquitter d'une cotisation
+        afin d'y adhérer</h4>
+    <p class="text-center mx-auto my-3">Les adhésions sont valables pendant 12 mois.</p>
+
+    <div class="flexbox-telephone text-center mt-5 mb-3">
+
+        <div class="flex-telephone-div mx-auto my-auto mt-5 text-center border-0">
+            <h5 class="mx-auto">Adhésion -25 ans</h5>
+        </div>
+
+        <div class="flex-telephone-div mx-auto my-auto mt-5 text-center border-0">
+            <h5 class="mx-auto">20 €</h5>
+        </div>
+
+    </div>
+
+    <div class="flexbox-telephone text-center mt-5 mb-3">
+
+        <div class="flex-telephone-div mx-auto my-auto mt-5 text-center border-0">
+            <h5 class="mx-auto">Adhésion Standart</h5>
+        </div>
+
+        <div class="flex-telephone-div mx-auto my-auto mt-5 text-center border-0">
+            <h5 class="mx-auto">40 €</h5>
+        </div>
+
+    </div>
+
+    <div class="flexbox-telephone text-center mt-5 mb-5">
+
+        <div class="flex-telephone-div mx-auto my-auto mt-5 text-center border-0">
+            <h5 class="mx-auto">Adhésion Support</h5>
+        </div>
+
+        <div class="flex-telephone-div mx-auto my-auto mt-5 text-center border-0">
+            <h5 class="mx-auto">Au choix, et on vous remercie d'avance</h5>
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
