@@ -20,55 +20,13 @@
         {% for image in images%}
         <div class="flex-telephone-div galerie mx-auto my-auto mt-5 mb-5 text-center border-0">
             <div class="shadow-lg mx-auto text-center w-75 bg-white mb-5">
-                <img src="{{ image.image.url }}" class="w-100 rounded" alt="Photo des visières anto-Covid">
+                <img src="{{ image.image.url }}" class="w-100 rounded" alt="{{ image.alt }}">
                 <div class="text-center py-2">
                     <p>{{image.titre}}</p>
                 </div>
             </div>
         </div>
         {% endfor%}
-
-        <div class="flex-telephone-div galerie mx-auto my-auto mt-5 mb-5 text-center border-0">
-            <div class="shadow-lg mx-auto text-center w-75 bg-white mb-5">
-                <img src="/imgs/galerie/creations.jpg" class="w-100 rounded" alt="Photo de diverses créations">
-                <div class="text-center py-2">
-                    <p>Un petit mélange des créations du Lab</p>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="flex-telephone-div galerie mx-auto my-auto mt-5 mb-5 text-center border-0">
-            <div class="shadow-lg mx-auto text-center w-75 bg-white mb-5">
-                <img src="/imgs/galerie/petit_robot_3d_articule.jpg" class="w-100 rounded"
-                    alt="Photo d'un robot articulé en 3D">
-                <div class="text-center py-2">
-                    <p>Un Petit Robot Articulé Imprimé en 3D</p>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="flex-telephone-div galerie mx-auto my-auto mt-5 mb-5 text-center border-0">
-            <div class="shadow-lg mx-auto text-center w-75 bg-white mb-5">
-                <img src="/imgs/galerie/pcb.png" class="w-100 rounded" alt="Photo d'un PCB découpé à la CNC">
-                <div class="text-center py-2">
-                    <p>Un PCB découpé à la CNC !</p>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="flex-telephone-div galerie mx-auto my-auto mt-5 mb-5 text-center border-0">
-            <div class="shadow-lg mx-auto text-center w-75 bg-white mb-5">
-                <img src="/imgs/galerie/cnc_alu.jpg" class="w-100 rounded" alt="Photo d'une création en aluminum">
-                <div class="text-center py-2">
-                    <p>Avec le bon réglage, l'aluminium est maintenant autorisé dans la CNC </p>
-                </div>
-            </div>
-        </div>
-
-
     </div>
 
 </div>
