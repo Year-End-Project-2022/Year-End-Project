@@ -20,5 +20,10 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('news', views.news, name='news'),
     path('ateliers', views.ateliers, name='ateliers'),
+    path('calendrier', views.calendrier, name='calendrier'),
+    path('machines', views.machines, name='machines'),
+    path('tarifs', views.tarifs, name='tarifs'),
+    path('adhesion', views.adhesion, name='adhesion'),
+    path('galerie', views.galerie, name='galerie'),
     path('about', views.about, name='about'),
 ]
