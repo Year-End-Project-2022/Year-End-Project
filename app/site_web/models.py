@@ -49,11 +49,11 @@ class Atelier(models.Model):
                               help_text="theme de l'atelier (ex: Modélisation, Programmation...)")
 
     image = models.ImageField(
-        upload_to='static/img/atelier/' + str(titre),
+        upload_to='static/img/atelier/principale',
         null=True, help_text="image principale de l'atelier")
 
     miniature = models.ImageField(
-        upload_to='static/img/atelier/' + str(titre),
+        upload_to='static/img/atelier/miniatures',
         null=True, help_text="image de la liste d'atelier")
 
     objectif = models.TextField(help_text="description global de l'atelier")
@@ -80,8 +80,11 @@ class Atelier(models.Model):
     annimateur_possible = models.ManyToManyField(
         PersonneDispo, help_text="liste des personnes capable de faire le cour   ")
 
-    def __str__(self):
-        return self.titre
-
     def points_list(self):
         return self.point_abordes.split('\n')
+
+    def path_img(self):
+        return "static/img/atelier/" + self.titre
+
+    def __str__(self):
+        return self.titre
