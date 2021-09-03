@@ -13,7 +13,7 @@ def news(request):
 def ateliers(request):
     all_ateliers = Atelier.objects.all()
     data = {
-        'atliers': all_ateliers
+        'ateliers': all_ateliers
     }
     return render(request, 'site_web/atelier/ateliers.html', data)
 

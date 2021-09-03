@@ -16,4 +16,11 @@
 
     <h5 class="mx-auto text-center my-3">Voir <a href="calendrier">le Calendrier des Ateliers</a></h5>
 
+    {% for atelier in ateliers %}
+        <p>test</p>
+        <a href="{% url 'atelier' atelier.titre %}"><img src="{{ atelier.miniature.url }}"></a>
+    {% endfor %}
+
+</div>
+
     {% endblock %}

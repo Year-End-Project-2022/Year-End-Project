@@ -33,8 +33,8 @@
 
     </headers>
     <div class="text-center my-3">
-        <img src="{% static 'img/atelier/fusion360/conception-fusion.png' %}" class="mx-auto w-75 image-atelier">
-        <img src="{% static 'img/atelier/fusion360/conception-fusion-miniature.jpg' %}" class="minia-atelier"
+        <img src="{{ atelier.image.url }}" class="mx-auto w-75 image-atelier">
+        <img src="{{ atelier.miniature.url}}" class="minia-atelier"
             style="display: none;">
     </div>
 
