@@ -49,7 +49,7 @@
     <div class="my-5 mx-auto">
         <h2 class="text-center titre my-5 mx-auto"><b>QUE FAIRE AU FABLAB ?</b></h2>
 
-        <h5 class="text-center my-3">Le Fablab propose des <a href="/ateliers/">Ateliers</a> à ses adhérents permettant
+        <h5 class="text-center my-3">Le Fablab propose des <a href="{% url 'ateliers' %}">Ateliers</a> à ses adhérents permettant
             de s'initier, de découvrir ou d'approfondir un sujet.</h5>
         <h5 class="text-center my-3">Ils ont réalisés par des adhérents bénévoles et se déroulent le <u>mardi soir.</u>
         </h5>
@@ -57,15 +57,15 @@
         <h5 class="text-center my-3">En raison des mesures sanitaires, les ateliers se tiennent actuellement sur le <a
                 href="https://discord.gg/jcD5eFf" target="blank" class="couleur-discord">serveur Discord</a></h5>
 
-        <h5 class="text-center my-3 mb-5">Vous pouvez décourvrir <a href="/ateliers/">les Ateliers du Fablab</a> ou bien
-            voir sur <a href="/ateliers/calendrier">le Calendrier des Ateliers</a> quand se tiendra la prochaine séance.
+        <h5 class="text-center my-3 mb-5">Vous pouvez décourvrir <a href="{% url 'ateliers' %}">les Ateliers du Fablab</a> ou bien
+            voir sur <a href="{% url 'calendrier' %}">le Calendrier des Ateliers</a> quand se tiendra la prochaine séance.
         </h5>
 
-        <h5 class="text-center my-3 mt-5">Le Fablab propose également un accès à des <a href="/machines">Machines et
+        <h5 class="text-center my-3 mt-5">Le Fablab propose également un accès à des <a href="{% url 'machines' %}">Machines et
                 Outils</a> à ses adhérents afin que chacun puisse mener à bien son projet.</h5>
         <h5 class="text-center mt-3 mb-5">L'utilisation des machines est encadrée par un adulte responsable.</h5>
 
-        <h5 class="text-center mt-5 my-3">Vous pouvez également visiter <a href="/galerie">la Galerie</a> afin de
+        <h5 class="text-center mt-5 my-3">Vous pouvez également visiter <a href="{% url 'galerie' %}">la Galerie</a> afin de
             découvrir diverses créations des adhérents.</h5>
 
     </div>
