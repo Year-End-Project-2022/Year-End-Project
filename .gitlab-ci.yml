@@ -17,6 +17,7 @@ stages:
   - bandit
   - prospector
   - deploy
+  -prod
 
 test:
   extends: .before_script_template
@@ -61,4 +62,13 @@ step-deploy-test:
       - localServeur
     only:
       - dev
+      - master
+
+step-deploy-prod:
+    stage: prod
+    script:
+      - docker-compose -f docker-compose-deploy.yml up -d --build
+    tags:
+      - Prod
+    only:
       - master
