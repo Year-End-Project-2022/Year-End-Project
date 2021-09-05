@@ -1,0 +1,38 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    container_name: postgres
+    volumes:
+      - "db:/var/lib/postgresql/data"
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  app:
+    container_name: django
+    build:
+      context: .
+    volumes:
+      - static_data:/vol/web
+    environment:
+      - ALLOWED_HOSTS=localhost,192.168.241.112
+    depends_on:
+      - db
+
+  proxy:
+    container_name: proxy
+    build:
+      context: ./proxy
+    volumes:
+      - static_data:/vol/static
+    ports:
+      - "8080:8080"
+    depends_on:
+      - app
+
+volumes:
+  static_data:
+  db: {}

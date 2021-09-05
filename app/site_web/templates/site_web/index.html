@@ -1,0 +1,74 @@
+{% extends 'site_web/base.html'%}
+{% load static %}
+
+{% block titre %}Lab-Ouest{% endblock %}
+
+{% block body %}
+
+<div class="w-75 mx-auto corps">
+    <div class="card text-center mx-auto my-3 w-75 border-0">
+        <img src="{% static 'img/logo_index.jpg' %}" class="card-img-top" alt="Logo INDEX">
+    </div>
+
+    <h2 class="text-center mx-auto my-3">Lab-Ouest est un FabLab : un espace collaboratif de fabrication et de partage
+        ouvert à tous implanté à La Roche-sur-Yon.</h2>
+
+    <div class="flexbox-telephone text-center">
+
+        <div class="flex-telephone-div mx-auto my-auto mt-5 text-center border-0">
+            <h5 class="mx-auto">Si vous voulez discuter avec nous en dehors des horaires d'ouverture, rejoignez-nous sur
+                <a href="https://discord.gg/jcD5eFf" target="blank" class="couleur-discord">Discord</a>
+            </h5>
+            <p class="mx-auto">Un canal d'accueil vous expliquera le fonctionnement du serveur</p>
+        </div>
+
+        <a href="https://discord.gg/jcD5eFf" target="blank" class="mx-auto flex-telephone-div text-center">
+            <img src="{% static 'img/discord_qrcode.png' %}" class="card-img-top mx-auto my-3 discord-index text-center"
+                alt="https://discord.gg/jcD5eFf">
+        </a>
+
+
+    </div>
+
+    <div class="my-5 mx-auto">
+        <h2 class="text-center titre my-5"><b>COMMENT VENIR ?</b></h2>
+
+        <h5 class="text-center my-3">Le Fablab est situé <a href="https://maps.google.com/?q=lab-ouest"
+                target="blank">123 Boulevard Louis Blanc</a> à La Roche Sur Yon (85)</h5>
+        <h5 class="text-center my-3">N'hésitez pas à venir jeter un oeil pendant les horaires d'ouverture !</h5>
+        <h5 class="text-center my-3">Nous sommes ouverts le mardi et le vendredi soir de 19h à 22h.</h5>
+        <h5 class="text-center my-3">Les horaires peuvent être amenés à être allongés, les informations sont envoyées
+            sur le <a href="https://discord.gg/jcD5eFf" target="blank" class="couleur-discord">serveur Discord </a></h5>
+
+        <div class="flexbox-telephone mx-auto text-center">
+            <img src="{% static 'img/carte_lrsy.png' %}" class="photos_venir mx-auto px-3 my-5 w-50">
+            <img src="{% static 'img/photo_exterieur.png' %}" class="photos_venir mx-auto px-3 my-5 w-50">
+        </div>
+    </div>
+
+    <div class="my-5 mx-auto">
+        <h2 class="text-center titre my-5 mx-auto"><b>QUE FAIRE AU FABLAB ?</b></h2>
+
+        <h5 class="text-center my-3">Le Fablab propose des <a href="{% url 'ateliers' %}">Ateliers</a> à ses adhérents permettant
+            de s'initier, de découvrir ou d'approfondir un sujet.</h5>
+        <h5 class="text-center my-3">Ils ont réalisés par des adhérents bénévoles et se déroulent le <u>mardi soir.</u>
+        </h5>
+
+        <h5 class="text-center my-3">En raison des mesures sanitaires, les ateliers se tiennent actuellement sur le <a
+                href="https://discord.gg/jcD5eFf" target="blank" class="couleur-discord">serveur Discord</a></h5>
+
+        <h5 class="text-center my-3 mb-5">Vous pouvez décourvrir <a href="{% url 'ateliers' %}">les Ateliers du Fablab</a> ou bien
+            voir sur <a href="{% url 'calendrier' %}">le Calendrier des Ateliers</a> quand se tiendra la prochaine séance.
+        </h5>
+
+        <h5 class="text-center my-3 mt-5">Le Fablab propose également un accès à des <a href="{% url 'machines' %}">Machines et
+                Outils</a> à ses adhérents afin que chacun puisse mener à bien son projet.</h5>
+        <h5 class="text-center mt-3 mb-5">L'utilisation des machines est encadrée par un adulte responsable.</h5>
+
+        <h5 class="text-center mt-5 my-3">Vous pouvez également visiter <a href="{% url 'galerie' %}">la Galerie</a> afin de
+            découvrir diverses créations des adhérents.</h5>
+
+    </div>
+
+</div>
+{% endblock %}

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo "Exécution pre-commit :\n"
-
+export DEBUG=1
 if coverage run ./app/manage.py test ./app; then
     echo "OK TEST"
 else
@@ -33,16 +33,28 @@ else
     exit 1
 fi
 
+prospector --strictness veryhigh app/site_web
+
+if prospector --strictness high app/site_web; then
+    echo "OK prospector app/site_web"
+else
+    exit 1
+fi
+
+if bandit -r app/app; then
+    echo "OK Bandi app/app"
+else
+    exit 1
+fi
+
 if bandit -r app/formulaire_outils; then
     echo "OK Bandi app/formulaire_outils"
 else
     exit 1
 fi
 
-if bandit -r app/site_labouest; then
-    echo "OK Bandi app/site_labouest"
+if bandit -r app/site_web; then
+    echo "OK Bandi app/site_web"
 else
     exit 1
 fi
-
-

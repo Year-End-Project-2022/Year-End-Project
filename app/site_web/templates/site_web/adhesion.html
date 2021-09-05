@@ -1,0 +1,31 @@
+{% extends 'site_web/base.html'%}
+{% load static %}
+
+{% block titre %}Lab-Ouest Adhesion{% endblock %}
+
+{% block body %}
+<div class="w-75 mx-auto corps">
+    <div class="card text-center mx-auto my-3 w-75 border-0">
+        <img src="{% static 'img/logo_index.jpg' %}" class="card-img-top" alt="Logo INDEX">
+    </div>
+
+    <h1 class="text-center mx-auto my-4 titre">ADHERER AU FABLAB</h1>
+    <h4 class="mx-auto mb-3 mt-5">Si vous souhaitez adhérer à l'association, merci de télécharger le ficher, le remplir
+        puis de nous le remettre pendant un OpenLab le vendredi ou le mardi soir ou de nous le retourner à cette adresse
+        :</h4>
+
+    <h5 class="mx-auto text-center my-3"><a href="https://maps.google.com/?q=lab-ouest" target="blank">Association Le
+            Lab Ouest <br>
+            La Loco Numérique <br>
+            123 Boulevard Louis Blanc<br>
+            85000 La Roche Sur Yon</a></h5>
+
+    <div class="text-center mx-auto my-5 py-3">
+        <h5 class="text-center mx-auto my-3">Télécharger le <a
+                href="{% static 'fichiers/Bulletin_Adhesion_LabOuest.pdf' %}" download="">bulletin d'adhésion</a></h5>
+        <h5 class="text-center mx-auto mt-3">Télécharger le <a
+                href="{% static 'fichiers/Inscription_Atelier_LabOuest.pdf' %}" download="">bulletin d'insciption aux
+                ateliers</a></h5>
+    </div>
+</div>
+{% endblock %}

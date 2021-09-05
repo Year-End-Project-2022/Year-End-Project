@@ -1,0 +1,28 @@
+{% extends 'site_web/base.html'%}
+{% load static %}
+
+{% block titre %}Lab-Ouest Ateliers{% endblock %}
+
+{% block body %}
+<div class="card text-center mx-auto my-3 w-75 border-0">
+    <img src="{% static 'img/logo_index.jpg' %}" class="card-img-top" alt="Logo INDEX">
+</div>
+
+<div class="w-50 mx-auto text-center">
+    <h1 class="titre text-center my-5 ml-5">LES ATELIERS DU FABLAB</h1>
+</div>
+
+<div class="w-75 mx-auto corps">
+
+    <h5 class="mx-auto text-center my-3">Voir <a href="calendrier">le Calendrier des Ateliers</a></h5>
+    <div class="flexbox-telephone flex-wrap my-5 mx-auto pr-5">
+        {% for atelier in ateliers %}
+            <div class="mx-auto text-center flex-telephone-div my-3">
+                <a class="text-decoration-none" href="{% url 'atelier' atelier.titre %}"><h4>{{atelier.titre}}</h4></a>";
+                <a class="text-decoration-none" href="{% url 'atelier' atelier.titre %}"><img src="{{ atelier.miniature.url }}" style="height: 70%; width: 70%; object-fit: contain"></a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+    {% endblock %}
