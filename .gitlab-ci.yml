@@ -11,8 +11,7 @@ cache:
     - apk add --update --no-cache --virtual python3-dev jpeg-dev zlib-dev postgresql-dev gcc python3-dev musl-dev
     - pip install -r requirements.txt
     - pip install -r localRequirement.txt
-    - PASSDB=$( openssl rand -base64 40 )
-    - echo $PASSDB
+    - export PASSDB=$( openssl rand -base64 40 )
 
 stages:
   - test
@@ -58,6 +57,8 @@ prospector:site_web:
 step-deploy-test:
     stage: deploy
     script:
+      - echo $PASSDB
+      - echo "//////////////////////////////////////////////////:////////////////////"
       - docker-compose -f docker-compose-deploy.yml up -d --build
     tags:
       - localServeur
