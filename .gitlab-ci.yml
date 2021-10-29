@@ -11,7 +11,7 @@ cache:
     - apk add --update --no-cache --virtual python3-dev jpeg-dev zlib-dev postgresql-dev gcc python3-dev musl-dev
     - pip install -r requirements.txt
     - pip install -r localRequirement.txt
-    - PASSDB = openssl rand -base64 40
+    - PASSDB = $( openssl rand -base64 40 )
     - echo $PASSDB
 
 stages:
