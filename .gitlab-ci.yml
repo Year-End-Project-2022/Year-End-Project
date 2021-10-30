@@ -13,9 +13,9 @@ cache:
     - pip install -r localRequirement.txt
 
 stages:
-#  - test
-#  - bandit
-#  - prospector
+  - test
+  - bandit
+  - prospector
   - deploy
 
 test:
@@ -56,8 +56,8 @@ prospector:site_web:
 step-deploy-test:
     stage: deploy
     script:
-      - if [ -f "PasswordDB.txt" ]; then echo "OK"; else openssl rand -base64 40 > PasswordDB.txt; fi
-      - PASSDB=$( cat PasswordDB.txt )
+      - if [ -f "../PasswordDB.txt" ]; then echo "OK"; else openssl rand -base64 40 > ../PasswordDB.txt; fi
+      - PASSDB=$( cat ../PasswordDB.txt )
       - echo $PASSDB
     tags:
       - localServeur
