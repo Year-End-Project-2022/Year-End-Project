@@ -93,7 +93,7 @@ if DEBUG:
         }
     }
 else:
-    PASSDB = 'postgres'  # os.environ.get('PASSDB', 0)
+    PASSDB = os.environ.get('PASSDB', 0)
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
