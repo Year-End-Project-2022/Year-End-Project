@@ -19,6 +19,7 @@ services:
       - static_data:/vol/web
     environment:
       - ALLOWED_HOSTS=localhost,192.168.241.112,192.168.241.111
+      - PASSDB=${PASSDB}
     depends_on:
       - db
 
