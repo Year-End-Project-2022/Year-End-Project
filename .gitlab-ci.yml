@@ -13,9 +13,9 @@ cache:
     - pip install -r localRequirement.txt
 
 stages:
-  - test
-  - bandit
-  - prospector
+#  - test
+#  - bandit
+#  - prospector
   - deploy
 
 test:
