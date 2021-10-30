@@ -56,10 +56,10 @@ prospector:site_web:
 step-deploy-test:
     stage: deploy
     script:
-      - export PASSDB=$( openssl rand -base64 40 )
       - echo $PASSDB
       - echo "//////////////////////////////////////////////////////////////////////"
-      - docker-compose -f docker-compose-deploy.yml up -d --build
+      - export PASSDB=$( openssl rand -base64 40 )
+      - echo $PASSDB
     tags:
       - localServeur
     only:
