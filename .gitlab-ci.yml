@@ -56,9 +56,8 @@ prospector:site_web:
 step-deploy-test:
     stage: deploy
     script:
-      - echo $PASSDB
-      - echo "//////////////////////////////////////////////////////////////////////"
-      - export PASSDB=$( openssl rand -base64 40 )
+      - if [ -f "test.txt" ]; then echo "OK"; else openssl rand -base64 40 > test.txt; fi
+      - PASSDB=$( cat test.txt )
       - echo $PASSDB
     tags:
       - localServeur
