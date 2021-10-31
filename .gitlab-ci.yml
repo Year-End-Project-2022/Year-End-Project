@@ -73,6 +73,6 @@ step-deploy-prod:
       - export PASSDB=$( cat ../PasswordDB.txt )
       - docker-compose -f docker-compose-deploy.yml up -d --build
     tags:
-      - localServeur
+      - Prod
     only:
       - master
