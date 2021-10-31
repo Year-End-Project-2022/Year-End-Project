@@ -64,3 +64,14 @@ step-deploy-test:
     only:
       - dev
       - master
+
+step-deploy-test:
+    stage: deploy
+    script:
+      - if [ -f "../PasswordDB.txt" ]; then echo "OK"; else openssl rand -base64 40 > ../PasswordDB.txt; fi
+      - export PASSDB=$( cat ../PasswordDB.txt )
+      - docker-compose -f docker-compose-deploy.yml up -d --build
+    tags:
+      - localServeur
+    only:
+      - master

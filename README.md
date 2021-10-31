@@ -57,11 +57,13 @@ Le `docker-compose-deploy.yml` sert lui a la mise en production il faut tournée
 
     pip3 install rotate-backups (a installer sur le serveur avec pip)
 
-    /var/spool/cron/
+    (install crontables)
+
+    /etc/crontab/
 
         0 0 \* \* 0 rotate-backups
 
-    make /etc/rotate-backups
+    make /etc/rotate-backups.ini
 
     ```ini
     [/media/Labouest-backups]
