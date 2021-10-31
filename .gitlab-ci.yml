@@ -7,7 +7,7 @@ cache:
 .before_script_template:
   before_script:
     - python -V
-    - apk add --update --no-cache --virtual .tmp gcc libc-dev linux-headers
+    - apk add --update --no-cache --virtual .tmp gcc libc-dev linux-headers openssl
     - apk add --update --no-cache --virtual python3-dev jpeg-dev zlib-dev postgresql-dev gcc python3-dev musl-dev
     - pip install -r requirements.txt
     - pip install -r localRequirement.txt
@@ -57,6 +57,8 @@ prospector:site_web:
 step-deploy-test:
     stage: deploy
     script:
+      - if [ -f "../PasswordDB.txt" ]; then echo "OK"; else openssl rand -base64 40 > ../PasswordDB.txt; fi
+      - export PASSDB=$( cat ../PasswordDB.txt )
       - docker-compose -f docker-compose-deploy.yml up -d --build
     tags:
       - localServeur
@@ -67,8 +69,10 @@ step-deploy-test:
 step-deploy-prod:
     stage: prod
     script:
+      - if [ -f "../PasswordDB.txt" ]; then echo "OK"; else openssl rand -base64 40 > ../PasswordDB.txt; fi
+      - export PASSDB=$( cat ../PasswordDB.txt )
       - docker-compose -f docker-compose-deploy.yml up -d --build
     tags:
-      - Prod
+      - localServeur
     only:
       - master

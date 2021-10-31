@@ -93,12 +93,13 @@ if DEBUG:
         }
     }
 else:
+    PASSDB = os.environ.get('PASSDB', 0)
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'postgres',
             'USER': 'postgres',
-            'PASSWORD': 'postgres',
+            'PASSWORD': PASSDB,
             'HOST': 'db',
             'PORT': '5432',
         }
@@ -141,7 +142,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-#MEDIA_URL = '/static/media/'
+# MEDIA_URL = '/static/media/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
