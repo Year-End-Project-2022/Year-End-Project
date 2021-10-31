@@ -11,6 +11,7 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=${PASSDB}
+
   app:
     container_name: django
     build:
@@ -33,6 +34,15 @@ services:
       - "8080:8080"
     depends_on:
       - app
+
+  backup:
+    container_name: backup
+    image: futurice/docker-volume-backup
+    volumes:
+      - static_data:/backup/static_data:ro
+      - db:/backup/db:ro
+      - /media/Labouest-backups:/archive
+
 
 volumes:
   static_data:

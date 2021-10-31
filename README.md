@@ -33,22 +33,24 @@ Le `docker-compose-deploy.yml` sert lui a la mise en production il faut tournée
 
 ## dossier :
 
-- `app` contient les fichier source
+-   `app` contient les fichier source
 
-- `proxy` contient les fichier de config de nginx
+-   `proxy` contient les fichier de config de nginx
 
-- `.githooks` contient les hooks a lancer avant chaque commit pour évité l'ajout de bug et monitor le niveau de test de l'application
+-   `.githooks` contient les hooks a lancer avant chaque commit pour évité l'ajout de bug et monitor le niveau de test de l'application
 
-- `script` contient le script de lancement de la docker de django
+-   `script` contient le script de lancement de la docker de django
 
 ## les fichier :
 
-- `.gitignore` (fait sur [gitignore.io](https://www.toptal.com/developers/gitignore) ) et `.prettignore` sont des fichiers pour git et prettier pour leur dire quel fichier ignoré
+-   `.gitignore` (fait sur [gitignore.io](https://www.toptal.com/developers/gitignore) ) et `.prettignore` sont des fichiers pour git et prettier pour leur dire quel fichier ignoré
 
-- `.gitlab-ci.yml` est le fichier de config des pipeline gitlab
+-   `.gitlab-ci.yml` est le fichier de config des pipeline gitlab
 
-- `Dockerfile` est le fichier de config de la docker django
+-   `Dockerfile` est le fichier de config de la docker django
 
-- `setup.cfg` est le fichier de config utiliser par coverage
+-   `setup.cfg` est le fichier de config utiliser par coverage
 
-- `localrequirement.txt` est l'ensemble des outils utiliser en local pour tester le code (prospector,bandit,coverage) utiliser pour les pré-commits
+-   `localrequirement.txt` est l'ensemble des outils utiliser en local pour tester le code (prospector,bandit,coverage) utiliser pour les pré-commits
+
+Il faut installer crontabs pour la gestion des backup
