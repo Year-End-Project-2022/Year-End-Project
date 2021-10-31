@@ -58,8 +58,6 @@ step-deploy-test:
     script:
       - if [ -f "../PasswordDB.txt" ]; then echo "OK"; else openssl rand -base64 40 > ../PasswordDB.txt; fi
       - export PASSDB=$( cat ../PasswordDB.txt )
-      - cp rotate-backups.ini ~/.rotate-backups.ini
-      - crontab @weekly rotate-backups
       - docker-compose -f docker-compose-deploy.yml up -d --build
     tags:
       - localServeur

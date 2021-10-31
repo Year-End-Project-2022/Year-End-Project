@@ -53,4 +53,20 @@ Le `docker-compose-deploy.yml` sert lui a la mise en production il faut tournée
 
 -   `localrequirement.txt` est l'ensemble des outils utiliser en local pour tester le code (prospector,bandit,coverage) utiliser pour les pré-commits
 
-Il faut installer crontabs pour la gestion des backup
+    -   pip3 install rotate-backups (a installer sur le serveur avec pip)
+
+    /var/spool/cron/
+
+        0 0 \* \* 0 rotate-backups
+
+    make /etc/rotate-backups
+
+    ```ini
+    [/media/Labouest-backups]
+    hourly = 24
+    daily = 7
+    weekly = 4
+    monthly = 12
+    yearly = always
+    ionice = idle
+    ```
