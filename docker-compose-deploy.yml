@@ -19,7 +19,7 @@ services:
     volumes:
       - static_data:/vol/web
     environment:
-      - ALLOWED_HOSTS=localhost,192.168.241.111,192.168.241.20
+      - ALLOWED_HOSTS=localhost,192.168.241.111,192.168.241.20,labouest.localhost
       - PASSDB=${PASSDB}
     depends_on:
       - db
