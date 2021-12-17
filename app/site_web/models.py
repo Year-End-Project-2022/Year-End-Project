@@ -69,7 +69,7 @@ class Atelier(models.Model):
 
     nb_seance_distance = models.IntegerField(
         default=0, help_text="""nombre de séance pouvant être faite a distance
-            (uniquement inforamtique)
+            (uniquement informatique)
             les séance a distance peuvent être quand même fait en présentiel""")
 
     nb_seance_physique = models.IntegerField(
