@@ -41,6 +41,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install Dependencies
       run: |
+        python3.8 -m venv env
         python -m venv ./venv
         source venv/bin/activate
         python -m pip install --upgrade pip
