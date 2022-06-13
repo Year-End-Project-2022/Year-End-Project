@@ -13,7 +13,24 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
+        db: [posgres]
         python-version: [3.9]
+        include:
+          - db: postgres
+            db_port: 5432
+    services:
+      postgres:
+        image: postgres:10
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: hunter2
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
 
     steps:
     - uses: actions/checkout@v3
@@ -27,5 +44,10 @@ jobs:
         pip install -r requirements.txt
         pip install -r localRequirement.txt
     - name: Run Tests
+      env:
+        DB: ${{ matrix.db }}
+        DB_HOST: 127.0.0.1
+        DB_PORT: ${{ matrix.db_port }}
+        DB_PASSWORD: hunter2
       run: |
         python app/manage.py test app/
