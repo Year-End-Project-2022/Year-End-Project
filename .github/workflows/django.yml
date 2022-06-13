@@ -51,4 +51,4 @@ jobs:
         DB_PORT: ${{ matrix.db_port }}
         DB_PASSWORD: hunter2
       run: |
-        python app/manage.py test ./ap
+        python app/manage.py test ./app
