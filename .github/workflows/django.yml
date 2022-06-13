@@ -49,6 +49,7 @@ jobs:
         pip install braintree mysqlclient apprise
     - name: Run Tests
       env:
+        DEBUG: 1
         DB: ${{ matrix.db }}
         DB_HOST: 127.0.0.1
         DB_PORT: ${{ matrix.db_port }}
