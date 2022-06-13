@@ -323,6 +323,8 @@ $RECYCLE.BIN/
 
 db/
 
+static/
+
 app/static/img/galerie/*
 app/static/img/atelier/*
 PasswordDB.txt
