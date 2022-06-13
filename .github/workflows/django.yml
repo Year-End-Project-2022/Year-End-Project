@@ -42,9 +42,6 @@ jobs:
     - name: Install Dependencies
       run: |
         pip install --upgrade pip
-        python3.8 -m venv venv
-        source venv/bin/activate
-        echo "VIRTUAL ENV:" $VIRTUAL_ENV
         pip install -r requirements.txt
         pip install -r localRequirement.txt
     - name: Run Tests
