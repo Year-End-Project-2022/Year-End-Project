@@ -48,8 +48,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'site_web.apps.SiteWebConfig',
     'formulaire_outils.apps.FormulaireOutilsConfig',
+    'local_user',
 
     'django.contrib.sites',
 
@@ -70,6 +72,13 @@ if DEBUG:
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = True
 
+LOGIN_URL = "/"  # TODO: change this to the real login url
+
+AUTH_USER_MODEL = "local_user.LocalUser"
+
+SOCIALACCOUNT_PROVIDERS = {
+
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

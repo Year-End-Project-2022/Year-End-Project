@@ -2,7 +2,6 @@
 <nav class="navbar navbar-light navbar-expand-lg text-primary py-2 mt-3 bg-body rounded sticky-top"
     style="background-color: #ffffff;">
 
-    <div style="width: 5%"></div>
 
     <a class="navbar-brand" href="/">
         <img src="{% static 'img/logo.jpg' %}" width="130">
@@ -51,6 +50,10 @@
 
             <li class="nav-item mx-2">
                 <a class="nav-link text-primary" href="{% url 'about' %}">Qui sommes-nous ?</a>
+            </li>
+
+            <li class="nav-item mx-2">
+                <a class="nav-link text-primary" href="{% url 'account_login' %}">Connexion</a>
             </li>
         </ul>
 
