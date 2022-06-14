@@ -71,8 +71,11 @@ if DEBUG:
 
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = True
+ACCOUNT_AUTENTICATION_METHOD = "username_email"
 
-LOGIN_URL = "/"  # TODO: change this to the real login url
+LOGIN_URL = "/accounts/login"  # redirect if not logged in
+LOGIN_REDIRECT_URL = "/"
+
 
 AUTH_USER_MODEL = "local_user.LocalUser"
 
