@@ -26,7 +26,7 @@
                 <a
                     href="https://discord.gg/jcD5eFf"
                     target="blank"
-                    class="couleur-discord"
+                    class="couleur-discord text-decoration-none"
                     >Discord</a
                 >
             </h5>
@@ -53,7 +53,8 @@
 
         <h5 class="text-center my-3">
             Le Fablab est situé
-            <a href="https://maps.google.com/?q=lab-ouest" target="blank"
+            <a href="https://goo.gl/maps/gZSGGUDbkMbRvwds6" target="blank"
+                class="text-decoration-none"
                 >123 Boulevard Louis Blanc</a
             >
             à La Roche Sur Yon (85)
@@ -71,19 +72,17 @@
             <a
                 href="https://discord.gg/jcD5eFf"
                 target="blank"
-                class="couleur-discord"
+                class="text-decoration-none"
                 >serveur Discord
             </a>
         </h5>
 
-        <div class="flexbox-telephone mx-auto text-center">
-            <img
-                src="{% static 'img/carte_lrsy.png' %}"
-                class="photos_venir mx-auto px-3 my-5 w-50"
-            />
+        <div class="flexbox-telephone mx-auto text-center px-3 my-5">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2737.6063437891144!2d-1.4399884657940045!3d46.67403261239368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48042fee40e12673%3A0x515baf9c454b32da!2s123%20Bd%20Louis%20Blanc%2C%2085000%20La%20Roche-sur-Yon!5e0!3m2!1sfr!2sfr!4v1655582909787!5m2!1sfr!2sfr"
+            width="600" height="450" allowfullscreen="" loading="lazy"></iframe>
             <img
                 src="{% static 'img/photo_exterieur.png' %}"
-                class="photos_venir mx-auto px-3 my-5 w-50"
+                class="mx-auto w-50"
             />
         </div>
     </div>
@@ -94,7 +93,7 @@
         </h2>
 
         <h5 class="text-center my-3">
-            Le Fablab propose des <a href="{% url 'ateliers' %}">Ateliers</a> à
+            Le Fablab propose des <a href="{% url 'ateliers' %}" class="couleur-discord text-decoration-none">Ateliers</a> à
             ses adhérents permettant de s'initier, de découvrir ou d'approfondir
             un sujet.
         </h5>
@@ -109,22 +108,22 @@
             <a
                 href="https://discord.gg/jcD5eFf"
                 target="blank"
-                class="couleur-discord"
+                class="couleur-discord text-decoration-none"
                 >serveur Discord</a
             >
         </h5>
 
         <h5 class="text-center my-3 mb-5">
             Vous pouvez décourvrir
-            <a href="{% url 'ateliers' %}">les Ateliers du Fablab</a> ou bien
+            <a href="{% url 'ateliers' %}" class="couleur-discord text-decoration-none">les Ateliers du Fablab</a> ou bien
             voir sur
-            <a href="{% url 'calendrier' %}">le Calendrier des Ateliers</a>
+            <a href="{% url 'calendrier' %}" class="couleur-discord text-decoration-none">le Calendrier des Ateliers</a>
             quand se tiendra la prochaine séance.
         </h5>
 
         <h5 class="text-center my-3 mt-5">
             Le Fablab propose également un accès à des
-            <a href="{% url 'machines' %}">Machines et Outils</a> à ses
+            <a href="{% url 'machines' %}" class="couleur-discord text-decoration-none">Machines et Outils</a> à ses
             adhérents afin que chacun puisse mener à bien son projet.
         </h5>
         <h5 class="text-center mt-3 mb-5">
@@ -133,7 +132,7 @@
 
         <h5 class="text-center mt-5 my-3">
             Vous pouvez également visiter
-            <a href="{% url 'galerie' %}">la Galerie</a> afin de découvrir
+            <a href="{% url 'galerie' %}" class="couleur-discord text-decoration-none">la Galerie</a> afin de découvrir
             diverses créations des adhérents.
         </h5>
     </div>
