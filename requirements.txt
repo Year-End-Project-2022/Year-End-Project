@@ -4,4 +4,4 @@ djangorestframework==3.12.4
 Pillow
 uWSGI>=2.0.18,<2.1
 psycopg2-binary
-django-allauth
+django-allauth==0.51.0

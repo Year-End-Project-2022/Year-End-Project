@@ -13,14 +13,13 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="w-25"></div>
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item mx-2 active">
+            <li class="nav-item mx-2">
                 <a class="nav-link text-primary" href="{% url 'index' %}">Accueil <span
                         class="sr-only">(current)</span></a>
             </li>
 
-            <li class="nav-item mx-2 active">
+            <li class="nav-item mx-2">
                 <a class="nav-link text-primary" href="{% url 'news' %}">News <span class="sr-only"></span></a>
             </li>
 
@@ -44,7 +43,7 @@
                 <a class="nav-link text-primary" href="{% url 'adhesion' %}">Bulletin d'adhésion</a>
             </li>
 
-            <li class="nav-item mx-2 active">
+            <li class="nav-item mx-2">
                 <a class="nav-link text-primary" href="{% url 'galerie' %}">La Galerie</a>
             </li>
 
@@ -52,9 +51,25 @@
                 <a class="nav-link text-primary" href="{% url 'about' %}">Qui sommes-nous ?</a>
             </li>
 
+            {% if user.is_authenticated %}
+            <li class="nav-item mx-2">
+                <a class="nav-link text-primary" href="{% url 'account_email' %}">Change E-mail</a>
+            </li>
+
+            <li class="nav-item mx-2">
+                <a class="nav-link text-primary" href="{% url 'account_logout' %}">Sign Out</a>
+            </li>
+            {% else %}
             <li class="nav-item mx-2">
                 <a class="nav-link text-primary" href="{% url 'account_login' %}">Connexion</a>
             </li>
+
+            <li class="nav-item mx-2">
+                <a class="nav-link text-primary" href="{% url 'account_signup' %}">Inscription</a>
+            </li>
+            {% endif %}
+
+
         </ul>
 
     </div>
