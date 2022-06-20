@@ -27,4 +27,5 @@ urlpatterns = [
     path('adhesion', views.adhesion, name='adhesion'),
     path('galerie', views.galerie, name='galerie'),
     path('about', views.about, name='about'),
+    path('utilisateur', views.utilisateur, name='utilisateur'),
 ]
