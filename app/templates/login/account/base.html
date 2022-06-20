@@ -5,9 +5,9 @@
 {% if messages %}
   <div>
     <strong>Messages:</strong>
-    <ul>
+    <ul class="list-group list-group-flush">
       {% for message in messages %}
-      <li>{{message}}</li>
+      <li class="list-group-item">{{message}}</li>
       {% endfor %}
     </ul>
   </div>
