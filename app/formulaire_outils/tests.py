@@ -65,3 +65,5 @@ class FormulaireOutilsTest(TestCase):
     def test_outil_custom_name(self):
         outil = Outils.objects.get(pk=2)
         self.assertEqual("custom Nom", str(outil))
+    def test(self):
+        self.assertEqual(1, 1)
