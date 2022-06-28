@@ -9,7 +9,8 @@ class LocalUserAdmin(admin.ModelAdmin):
                     'email',
                     'first_name',
                     'last_name',
-                    'is_staff'
+                    'is_staff',
+                    'pseudo_discord'
                     )
     
     list_filter = ('is_staff',
@@ -21,7 +22,9 @@ class LocalUserAdmin(admin.ModelAdmin):
     search_fields = ('username',
                      'email',
                      'first_name',
-                     'last_name'
+                     'last_name',
+                     'pseudo_discord',
+                     'github'
                      )
 
 admin.site.register(LocalUser, LocalUserAdmin)

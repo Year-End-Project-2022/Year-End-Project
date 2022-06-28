@@ -58,8 +58,6 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.discord',
-    'allauth.socialaccount.providers.github',
 ]
 
 SITE_ID = 1
@@ -81,6 +79,11 @@ AUTH_USER_MODEL = "local_user.LocalUser"
 
 SOCIALACCOUNT_PROVIDERS = {
 
+}
+
+
+ACCOUNT_FORMS = {
+    'signup': 'local_user.forms.CustomSignupForm',
 }
 
 MIDDLEWARE = [
