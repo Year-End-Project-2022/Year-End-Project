@@ -1,17 +1,6 @@
 {% extends 'base.html'%} {% load static %}
 {% block titre %} {% block head_title %}{% endblock %} {% endblock %}
 {% block body %}
-
-{% if messages %}
-  <div>
-    <strong>Messages:</strong>
-    <ul>
-      {% for message in messages %}
-      <li>{{message}}</li>
-      {% endfor %}
-    </ul>
-  </div>
-{% endif %}
   
 <div class="container">
   <div class="row justify-content-center">
@@ -23,5 +12,17 @@
     </div>
   </div>
 </div>
+
+
+{% if messages %}
+  <div class="mx-auto text-center m-3">
+    <strong class="mx-auto text-center">Messages:</strong>
+    <ul class="list-group list-group-flush">
+      {% for message in messages %}
+      <li class="list-group-item mx-auto text-center">{{message}}</li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}
 
 {% endblock %}
