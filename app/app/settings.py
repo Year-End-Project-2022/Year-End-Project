@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'site_web.apps.SiteWebConfig',
     'formulaire_outils.apps.FormulaireOutilsConfig',
     'local_user',
+    'atelier',
 
     'django.contrib.sites',
 
@@ -153,7 +154,7 @@ AUTHENTICATION_BACKENDS = [
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME':
-            """django.contrib.auth.password_validation.UserAttributeSimilarityValidator""",
+            'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
         'NAME':

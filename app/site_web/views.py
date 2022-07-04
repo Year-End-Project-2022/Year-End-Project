@@ -1,5 +1,5 @@
-from django.shortcuts import redirect, render
-from .models import ImageGalerie, Atelier
+from django.shortcuts import render
+from .models import ImageGalerie
 
 
 def index(request):
@@ -8,25 +8,6 @@ def index(request):
 
 def news(request):
     return render(request, 'site_web/news.html')
-
-
-def ateliers(request):
-    all_ateliers = Atelier.objects.all()
-    data = {
-        'ateliers': all_ateliers
-    }
-    return render(request, 'site_web/atelier/ateliers.html', data)
-
-
-def atelier(request, name):
-    try:
-        atelier_obj = Atelier.objects.get(titre=name)
-        data = {
-            'atelier': atelier_obj
-        }
-    except Atelier.DoesNotExist:
-        return redirect('index')
-    return render(request, 'site_web/atelier/atelier.html', data)
 
 
 def calendrier(request):
