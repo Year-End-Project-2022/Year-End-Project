@@ -23,6 +23,8 @@ class Niveau(models.Model):
 
 class Atelier(models.Model):
     
+    publier = models.BooleanField(default=False)
+    
     titre = models.CharField(max_length=200, help_text="titre de l'atelier")
 
     theme = models.ForeignKey(Theme, on_delete=models.PROTECT,
@@ -64,7 +66,10 @@ class Atelier(models.Model):
 
     annimateur_possible = models.ManyToManyField(
         LocalUser,
-        help_text="liste des personnes capable de faire le cour   ")
+        help_text="liste des personnes capable de faire le cour")
+    
+    minimum_inscrit = models.IntegerField(default=0,
+        help_text="nombre de personnes minimum");
 
     def points_list(self):
         return self.point_abordes.split('\n')
@@ -82,3 +87,23 @@ class Atelier(models.Model):
     admin_photo.short_description = 'Miniature'
 
     admin_photo.allow_tags = True
+
+
+class Session(models.Model):
+    date = models.DateField(help_text="date de la séance")
+    
+    
+class Seance(models.Model):
+    atelier = models.ForeignKey(Atelier,
+                                on_delete=models.SET_NULL,
+                                default=None,
+                                null=True,
+                                blank=True)
+    
+    personne_incrit = models.ManyToManyField(LocalUser,
+                                             blank=True)
+    
+    dates = models.OneToOneField(Session,null=True,blank=True,
+                                 default=models.SET_NULL,
+                                 on_delete=models.SET_NULL,
+                                 help_text="date des séances")

@@ -330,3 +330,5 @@ app/static/img/atelier/*
 PasswordDB.txt
 
 .env
+app/atelier/migrations/0002_atelier_minimum_inscrit_atelier_publier_and_more.py
+app/atelier/migrations/0003_session_seance.py
