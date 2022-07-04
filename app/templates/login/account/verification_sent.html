@@ -7,6 +7,8 @@
 {% block content %}
     <h1>{% trans "Verify Your E-mail Address" %}</h1>
 
-    <p>{% blocktrans %}We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. If you do not see the verification e-mail in your main inbox, check your spam folder. Please contact us if you do not receive the verification e-mail within a few minutes.{% endblocktrans %}</p>
+    <div class="bg-white rounded shadow p-5 d-flex justify-content-center flex-column">
+        <p class="text-center">{% blocktrans %}Nous vous avons envoyé un e-mail pour vérification. Suivez le lien fourni pour finaliser le processus d'inscription. Si vous ne voyez pas l'e-mail de vérification dans votre boîte de réception principale, vérifiez votre dossier spam. Veuillez nous contacter si vous ne recevez pas l'e-mail de vérification dans les minutes qui suivent.{% endblocktrans %}</p>
+    </div>
 
 {% endblock %}
