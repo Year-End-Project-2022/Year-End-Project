@@ -1,4 +1,4 @@
-./ap{% extends 'site_web/base.html'%}
+{% extends 'base.html'%}
 {% load static %}
 
 {% block titre %}Lab-Ouest Tarifs{% endblock %}
@@ -13,18 +13,23 @@
                 </h2>
             </div>
             <div class="d-flex flex-column justify-content-evenly">
-                <div class="d-grid gap-3">
+                <div class="d-flex flex-column justify-content-center">
                     <h3>{{ utilisateur.first_name }} {{ utilisateur.last_name}}</h3>
-                    {% if utilisateur.discord %}
-                        <h3><img src="{% static 'SVG/discord.svg' %}" style="margin-right: 1rem"/>{{ utilisateur.discord }}</h3>
+                    {% if utilisateur.pseudo_discord %}
+                        <h3 class="d-flex flex-row "><img src="{% static 'SVG/discord-brands.svg' %}" style="margin-right: 1rem; height: 2rem; width: 2rem"/>{{ utilisateur.pseudo_discord }}</h3>
+                    {% endif %}
+                    {% if utilisateur.github %}
+                        <h3 class="d-flex flex-row"><img src="{% static 'SVG/github-brands.svg' %}" style="margin-right: 1rem; height: 2rem; width: 2rem"/>{{ utilisateur.github }}</h3>
                     {% endif %}
                 </div>
                 <div class="">
-                    <p>Nombre de crédit: {{ utilisateur.credit }}<img src="{% static 'SVG/coin-euro.svg' %}"/></p>
-                    <p>Date d'adhésion: {{ utilisateur.subscriptionDate }}</p>
+                    <p>Nombre de crédit: {{ utilisateur.credit }}</p>
+                    {% if utilisateur.subscriptionDate %}
+                        <p>Date d'adhésion: {{ utilisateur.subscriptionDate }}</p>
+                    {% endif %}
                 </div>
                 <div class="justify-content-end" style="text-align: end">
-                    <button type="button" class="btn btn-outline-secondary">Editer</button>
+                    <a class="btn btn-outline-secondary" href="{% url 'edit_utilisateur' %}">Editer</a>
                 </div>
         </div>
         </div>

@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from .models import LocalUser
+from .models import LocalUser, Competence
+
 
 # Register your models here.
 
@@ -12,7 +13,7 @@ class LocalUserAdmin(admin.ModelAdmin):
                     'is_staff',
                     'pseudo_discord'
                     )
-    
+
     list_filter = ('is_staff',
                    'is_superuser',
                    'is_active',
@@ -27,4 +28,7 @@ class LocalUserAdmin(admin.ModelAdmin):
                      'github'
                      )
 
+
 admin.site.register(LocalUser, LocalUserAdmin)
+
+admin.site.register(Competence)
