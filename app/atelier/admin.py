@@ -19,16 +19,23 @@ class PubliqueAdmin(admin.ModelAdmin):
     def has_module_permission(self, request):
         return False
 
+class SessionAdmin(admin.StackedInline):
+    model = Session
+    extra = 1
+    
+
+
 @admin.register(Seance)
 class SeanceAdmin(admin.ModelAdmin):
-    list_display = ('titre','atelier','liste_des_dates')
+    inlines = [SessionAdmin]
+    list_display = ('titre','nb_incrit','atelier','liste_des_dates')
     list_filter = ('atelier__titre',)
-    search_fields = ('titre','atelier__titre', 'dates__date',)
+    search_fields = ('titre','atelier__titre',)
+    
+    def liste_des_dates(self, obj):
+        return ", ".join([str(x) for x in SessionAdmin.model.objects.filter(seance=obj).values_list('date', flat=True)])
 
-@admin.register(Session)
-class DateAdmin(admin.ModelAdmin):
-    def has_module_permission(self, request):
-        return False
+
 
 @admin.register(Atelier)
 class AtelierAdmin(admin.ModelAdmin):
@@ -39,6 +46,7 @@ class AtelierAdmin(admin.ModelAdmin):
                     'niveau',
                     "nb_seance_distance",
                     "nb_seance_physique",
+                    "nb_presonne_interesse",
                     "publier",)
 
     list_filter = ('theme',

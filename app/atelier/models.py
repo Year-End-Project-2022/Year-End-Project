@@ -66,10 +66,19 @@ class Atelier(models.Model):
 
     annimateur_possible = models.ManyToManyField(
         LocalUser,
-        help_text="liste des personnes capable de faire le cour")
+        help_text="liste des personnes capable de faire le cour",
+        related_name="annimateur")
     
     minimum_inscrit = models.IntegerField(default=0,
         help_text="nombre de personnes minimum");
+    
+    presonne_interesse = models.ManyToManyField(
+        LocalUser,
+        help_text="liste des personnes intéressées",
+        related_name="interresse")
+    
+    def nb_presonne_interesse(self):
+        return self.presonne_interesse.count()
 
     def points_list(self):
         return self.point_abordes.split('\n')
@@ -88,13 +97,6 @@ class Atelier(models.Model):
 
     admin_photo.allow_tags = True
 
-
-class Session(models.Model):
-    date = models.DateField(help_text="date de la séance")
-    
-    def __str__(self):
-        return self.date.strftime("%d/%m/%Y")
-    
     
 class Seance(models.Model):
     titre = models.CharField(max_length=200, default="",)
@@ -106,10 +108,13 @@ class Seance(models.Model):
     
     personne_incrit = models.ManyToManyField(LocalUser,
                                              blank=True)
-    
-    dates = models.ManyToManyField(Session,blank=True,
-                                 default=None,
-                                 help_text="date des séances")
+    def nb_incrit(self):
+        return self.personne_incrit.count()
 
-    def liste_des_dates(self):
-        return ", ".join([str(x) for x in self.dates.all()])
+class Session(models.Model):
+    date = models.DateField(help_text="date de la séance")
+    
+    seance = models.ForeignKey(Seance, on_delete=models.CASCADE, default=None, null=True, blank=True)
+    
+    def __str__(self):
+        return self.date.strftime("%d/%m/%Y")
