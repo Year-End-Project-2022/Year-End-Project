@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Atelier, Niveau, Publique, Seance, Theme
+from .models import Atelier, Niveau, Publique, Seance, Theme, Session
 
 
 @admin.register(Theme)
@@ -21,10 +21,15 @@ class PubliqueAdmin(admin.ModelAdmin):
 
 @admin.register(Seance)
 class SeanceAdmin(admin.ModelAdmin):
-    list_display = ('atelier',)
+    list_display = ('titre','atelier','liste_des_dates')
     list_filter = ('atelier__titre',)
-    search_fields = ('atelier__titre', 'dates__date',)
-    
+    search_fields = ('titre','atelier__titre', 'dates__date',)
+
+@admin.register(Session)
+class DateAdmin(admin.ModelAdmin):
+    def has_module_permission(self, request):
+        return False
+
 @admin.register(Atelier)
 class AtelierAdmin(admin.ModelAdmin):
     list_display = ('admin_photo',
@@ -34,13 +39,13 @@ class AtelierAdmin(admin.ModelAdmin):
                     'niveau',
                     "nb_seance_distance",
                     "nb_seance_physique",
-                    )
+                    "publier",)
 
     list_filter = ('theme',
                    'publique',
                    'niveau',
-                   'annimateur_possible'
-                   )
+                   'annimateur_possible',
+                   'publier',)
 
     search_fields = ('titre',
                      'theme__titre',

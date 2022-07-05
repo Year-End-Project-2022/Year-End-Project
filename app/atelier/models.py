@@ -92,10 +92,14 @@ class Atelier(models.Model):
 class Session(models.Model):
     date = models.DateField(help_text="date de la séance")
     
+    def __str__(self):
+        return self.date.strftime("%d/%m/%Y")
+    
     
 class Seance(models.Model):
+    titre = models.CharField(max_length=200, default="",)
     atelier = models.ForeignKey(Atelier,
-                                on_delete=models.SET_NULL,
+                                on_delete=models.PROTECT,
                                 default=None,
                                 null=True,
                                 blank=True)
@@ -103,7 +107,9 @@ class Seance(models.Model):
     personne_incrit = models.ManyToManyField(LocalUser,
                                              blank=True)
     
-    dates = models.OneToOneField(Session,null=True,blank=True,
-                                 default=models.SET_NULL,
-                                 on_delete=models.SET_NULL,
+    dates = models.ManyToManyField(Session,blank=True,
+                                 default=None,
                                  help_text="date des séances")
+
+    def liste_des_dates(self):
+        return ", ".join([str(x) for x in self.dates.all()])
