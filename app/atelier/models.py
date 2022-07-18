@@ -107,7 +107,17 @@ class Seance(models.Model):
                                 blank=True)
     
     personne_incrit = models.ManyToManyField(LocalUser,
-                                             blank=True)
+                                             blank=True,
+                                             related_name="incrit")
+    
+    animateur = models.ForeignKey(LocalUser,
+                                  on_delete=models.PROTECT,
+                                  default=None,
+                                  null=True,
+                                  blank=True,
+                                  related_name="animateur",
+                                  help_text="animateur responsable de la séance")
+    
     def nb_incrit(self):
         return self.personne_incrit.count()
 
