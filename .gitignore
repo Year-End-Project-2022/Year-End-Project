@@ -333,3 +333,4 @@ PasswordDB.txt
 .env
 migrations/**
 migrations/**.py
+app/atelier/migrations/0003_seance_animateur_alter_seance_personne_incrit.py
