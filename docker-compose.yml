@@ -8,7 +8,20 @@ services:
       - "8000:8000"
     volumes:
       - ./app:/app
-    command: sh -c "python manage.py runserver 0.0.0.0:8000 && python manage.py makemigrations && python manage.py migrate"
+    command: sh -c "python manage.py runserver 0.0.0.0:9000 && python manage.py makemigrations && python manage.py migrate"
     environment:
       - DEBUG=1
       - ALLOWED_HOSTS=localhost,*,192.168.241.112
+
+
+
+  proxy:
+    build:
+      context: ./proxy
+    restart: always
+    depends_on:
+      - app
+    ports:
+      - 8000:8000
+    volumes:
+      - static-data:/vol/static

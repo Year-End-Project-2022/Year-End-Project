@@ -42,7 +42,7 @@ class Outils(models.Model):
         Media, on_delete=models.PROTECT, related_name="imageBase")
 
     image_cote = models.ForeignKey(
-        Media, on_delete=models.PROTECT, related_name="imageCote")
+        Media, on_delete=models.PROTECT, related_name="imageCote", null=True, blank=True)
 
     nombre = models.IntegerField(blank=True, default=1)
 

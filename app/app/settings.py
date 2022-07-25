@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'site_web.apps.SiteWebConfig',
     'formulaire_outils.apps.FormulaireOutilsConfig',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -99,7 +100,7 @@ else:
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'postgres',
             'USER': 'postgres',
-            'PASSWORD': PASSDB,
+            'PASSWORD': 'test',
             'HOST': 'db',
             'PORT': '5432',
         }
