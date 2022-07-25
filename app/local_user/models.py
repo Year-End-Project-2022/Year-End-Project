@@ -10,5 +10,5 @@ class LocalUser(AbstractUser):
     pseudo_discord = models.CharField(max_length=100, blank=True, null=True)
     github = models.URLField(blank=True, null=True)
     photo = models.ImageField(upload_to='static/img/user', blank=True, null=True)
-    date_fst_adhesion = models.DateField(blank=True, null=True)
-    date_last_adhesion = models.DateField(blank=True, null=True)
+    date_fst_adhesion = models.DateField(blank=True, null=True, help_text="date de 1er adhésion de l'utilisateur")
+    date_last_adhesion = models.DateField(blank=True, null=True, help_text="date de dernière adhésion de l'utilisateur")
