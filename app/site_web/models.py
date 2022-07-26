@@ -8,13 +8,13 @@ class ImageGalerie(models.Model):
 
     alt = models.TextField(blank=True, null=True)
 
-    image = models.ImageField(upload_to='static/img/galerie')
+    image = models.ImageField(upload_to='static/photo/galerie')
 
     def __str__(self):
         return self.titre
 
     def admin_photo(self):
-        return format_html('<img src="{}" width="100" height="100" />'
+        return format_html('<photo src="{}" width="100" height="100" />'
                            .format(self.image.url))
     admin_photo.short_description = 'Image'
     admin_photo.allow_tags = True
@@ -103,7 +103,7 @@ class Atelier(models.Model):
         return self.titre
 
     def admin_photo(self):
-        return format_html('<img src="{}" width="100" height="100" />'
+        return format_html('<photo src="{}" width="100" height="100" />'
                            .format(self.miniature.url))
 
     admin_photo.short_description = 'Miniature'

@@ -5,9 +5,9 @@
 
 {% block body %}
     <div class="m-5">
-        <div class="d-flex justify-content-evenly mh-50">
-            <div class="d-flex flex-column justify-content-center">
-                <img class="w-auto h-auto mb-2" src={{ utilisateur.img }}/>
+        <div class="d-flex justify-content-evenly mh-50" style="max-width: 90vw">
+            <div class="d-flex flex-column justify-content-center" style="max-width: 40vw">
+                <img class="w-auto h-auto mb-2 " style="max-height: 40vw; max-width: 30vh" src={{ utilisateur.photo }}/>
                 <h2 style="text-align: center">
                     {{ utilisateur.username }}
                 </h2>

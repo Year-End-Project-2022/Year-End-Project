@@ -26,11 +26,11 @@ class UserEditForm(forms.ModelForm):
     date_naissance = forms.DateField(label="Date de naissance :", required=False)
     pseudo_discord = forms.CharField(label="Discord :", max_length=100, required=False)
     github = forms.CharField(label="Github :", max_length=100, required=False)
-    img = forms.URLField(label="Importer avatar", required=False)
+    photo = forms.ImageField(required=False)
 
     class Meta:
         model = LocalUser
-        fields = ['first_name', 'last_name', 'username', 'date_naissance', 'pseudo_discord', 'github', 'img']
+        fields = ['first_name', 'last_name', 'username', 'date_naissance', 'pseudo_discord', 'github', 'photo']
 
 
 class CompetenceForm(forms.Form):

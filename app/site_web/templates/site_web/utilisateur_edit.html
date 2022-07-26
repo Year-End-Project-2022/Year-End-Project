@@ -5,11 +5,12 @@
 
 {% block body %}
     <div class="m-5">
-        <form method="POST" enctype="multipart/form-data" class="d-flex justify-content-evenly mh-50">
+        <form method="POST" enctype="multipart/form-data" class="d-flex justify-content-evenly mh-50" style="max-width: 80vw">
             {% csrf_token %}
-            <div class="d-flex flex-column justify-content-center">
-                <img class="w-auto h-auto mb-2" src={{ utilisateur.img }}/>
-                <div>{{ user_form.img.label }}{{ user_form.img }}
+            <div class="d-flex flex-column justify-content-center" style="max-width: 40vw">
+                <img class="w-auto h-auto mb-2" style="max-height: 40vw; max-width: 30vh" src={{ utilisateur.photo }}/>
+                <div style="margin-bottom: 1rem">
+                    {{ user_form.photo }}
                 </div>
                 <div>
                     {{ user_form.username.label }}
@@ -29,7 +30,8 @@
                     <div class="d-flex flex-row align-items-end"><img src="{% static 'SVG/discord-brands.svg' %}"
                                                                       style="margin-right: 1rem; height: 1rem; width: 1rem"/>{{ user_form.pseudo_discord.label }} {{ user_form.pseudo_discord }}
                     </div>
-                    <div><img src="{% static 'SVG/github-brands.svg' %}"
+                    <div>
+                        <img src="{% static 'SVG/github-brands.svg' %}"
                               style="margin-right: 1rem; height: 1rem; width: 1rem"/>{{ user_form.github.label }} {{ user_form.github }}
                     </div>
                 </div>

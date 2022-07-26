@@ -69,17 +69,12 @@ def utilisateur(request):
     try:
         user = request.user
         competences = user.competences
-        print('Competence.objects.all().values_list')
-        qs = Competence.objects.all().values_list('name', flat=True)
-        print(qs)
-        value = [item for item in qs]
-        print('value: ')
-        print(value)
 
         data = {
             'utilisateur': user,
             'competences': competences,
         }
+
     except user.DoesNotExist:
         return redirect('index')
     if request.user.is_authenticated:
@@ -91,7 +86,7 @@ def utilisateur(request):
 @login_required
 def edit_utilisateur(request):
     if request.method == 'POST':
-        user_form = UserEditForm(request.POST, instance=request.user)
+        user_form = UserEditForm(request.POST, request.FILES, instance=request.user)
         print('request :')
         print(request.POST)
 
