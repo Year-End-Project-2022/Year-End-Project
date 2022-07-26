@@ -7,10 +7,8 @@ from django.contrib.auth.models import AbstractUser
 class Competence(models.Model):
     name = models.CharField(max_length=50, primary_key=True, unique=True)
 
-
-class UserCompetence(models.Model):
-    competence = models.ForeignKey(Competence, on_delete=models.CASCADE)
-    value = models.PositiveIntegerField()
+    def __str__(self):
+        return self.name
 
 
 class LocalUser(AbstractUser):
@@ -21,5 +19,5 @@ class LocalUser(AbstractUser):
     github = models.CharField(max_length=100, blank=True, null=True)
     img = models.URLField(
         default="https://st4.depositphotos.com/1012074/20946/v/450/depositphotos_209469984-stock-illustration-flat-isolated-vector-illustration-icon.jpg")
-    competences = models.ManyToManyField(UserCompetence)
+    competences = models.JSONField(default={})
     credit = models.IntegerField(default=0)

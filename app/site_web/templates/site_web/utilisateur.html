@@ -36,17 +36,17 @@
     
         <div class="mt-5 w-75 " >
             <h2 class="text-capitalize fw-bold text-decoration-underline">
-                compétance:
+                compétence:
             </h2>
             <div class="d-grid" style="display: grid;
                 grid-template-columns: repeat(2, 1fr);
                 row-gap: 10px;
                 column-gap: 5%;">
-                {% for competance in utilisateur.competance %}
+                {% for key, value in competences.items %}
                     <div class="p-2">
-                        <p>{{competance.name}}:</p>
+                        <p>{{key}}:</p>
                         <div class="progress ">
-                            <div class="progress-bar" role="progressbar" style="width: {{ competance.value}}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar" role="progressbar" style="width: {{ value }}%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                 {% endfor %}

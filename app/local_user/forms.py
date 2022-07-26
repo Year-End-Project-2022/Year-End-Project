@@ -1,7 +1,6 @@
 from allauth.account.forms import SignupForm
 from django import forms
-
-from local_user.models import LocalUser
+from local_user.models import LocalUser, Competence
 
 
 class CustomSignupForm(SignupForm):
@@ -28,3 +27,13 @@ class UserEditForm(forms.ModelForm):
     class Meta:
         model = LocalUser
         fields = ['first_name', 'last_name', 'username', 'date_naissance', 'pseudo_discord', 'github', 'img']
+
+
+class CompetenceForm(forms.Form):
+    qs = Competence.objects.all().values_list('name', flat=True)
+
+    competence_list = ['CSS']
+    print('competence_list')
+    print(competence_list)
+    competence = forms.ChoiceField(choices=competence_list, label='Compétence :')
+    value = forms.IntegerField(min_value=0, max_value=5, label='Niveau (entre 1 à 5):', required=False)

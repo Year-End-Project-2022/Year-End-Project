@@ -5,65 +5,77 @@
 
 {% block body %}
     <div class="m-5">
-            <form method="POST" enctype="multipart/form-data" class="d-flex justify-content-evenly mh-50">
-                {% csrf_token %}
-                <div class="d-flex flex-column justify-content-center">
-                    <img class="w-auto h-auto mb-2" src={{ utilisateur.img }}/>
-                    <div>{{ user_form.img.label }}{{ user_form.img }}
+        <form method="POST" enctype="multipart/form-data" class="d-flex justify-content-evenly mh-50">
+            {% csrf_token %}
+            <div class="d-flex flex-column justify-content-center">
+                <img class="w-auto h-auto mb-2" src={{ utilisateur.img }}/>
+                <div>{{ user_form.img.label }}{{ user_form.img }}
+                </div>
+                <div>
+                    {{ user_form.username.label }}
+                    {{ user_form.username }}
+                </div>
+            </div>
+            <div class="d-flex flex-column justify-content-evenly">
+                <div class="d-flex flex-column align-items-end">
+                    <div>
+                        {{ user_form.first_name.label }}
+                        {{ user_form.first_name }}
                     </div>
                     <div>
-                        {{ user_form.username.label }}
-                        {{ user_form.username }}
+                        {{ user_form.last_name.label }}
+                        {{ user_form.last_name }}
+                    </div>
+                    <div class="d-flex flex-row align-items-end"><img src="{% static 'SVG/discord-brands.svg' %}"
+                                                                      style="margin-right: 1rem; height: 1rem; width: 1rem"/>{{ user_form.pseudo_discord.label }} {{ user_form.pseudo_discord }}
+                    </div>
+                    <div><img src="{% static 'SVG/github-brands.svg' %}"
+                              style="margin-right: 1rem; height: 1rem; width: 1rem"/>{{ user_form.github.label }} {{ user_form.github }}
                     </div>
                 </div>
-                <div class="d-flex flex-column justify-content-evenly">
-                    <div class="d-flex flex-column align-items-end">
-                        <div>
-                            {{ user_form.first_name.label }}
-                            {{ user_form.first_name }}
-                        </div>
-                        <div>
-                            {{ user_form.last_name.label }}
-                            {{ user_form.last_name }}
-                        </div>
-                        <div class="d-flex flex-row align-items-end"><img src="{% static 'SVG/discord-brands.svg' %}"
-                                 style="margin-right: 1rem; height: 1rem; width: 1rem"/>{{ user_form.pseudo_discord.label }} {{ user_form.pseudo_discord }}
-                        </div>
-                        <div><img src="{% static 'SVG/github-brands.svg' %}"
-                                 style="margin-right: 1rem; height: 1rem; width: 1rem"/>{{ user_form.github.label }} {{ user_form.github }}
-                        </div>
-                    </div>
-                    <div class="">
-                        <p>Nombre de crédit: {{ utilisateur.credit }}</p>
-                        <p>Date d'adhésion: {{ utilisateur.subscriptionDate }}</p>
-                        <p>{{ user_from.date_naissance.label }}{{ user_from.date_naissance }}</p>
-                    </div>
-                    <div class="justify-content-end" style="text-align: end">
-                        <button type="submit" class="btn btn-outline-primary">Valider</button>
-                    </div>
+                <div class="">
+                    <p>Nombre de crédit: {{ utilisateur.credit }}</p>
+                    <p>Date d'adhésion: {{ utilisateur.subscriptionDate }}</p>
+                    <p>{{ user_from.date_naissance.label }}{{ user_from.date_naissance }}</p>
                 </div>
-            </form>
-        </div>
+                <div></div>
+                <div class="justify-content-end" style="text-align: end">
+                    <button type="submit" class="btn btn-outline-primary">Valider</button>
+                </div>
+            </div>
+        </form>
 
         <div class="mt-5 w-75 ">
             <h2 class="text-capitalize fw-bold text-decoration-underline">
                 compétence:
             </h2>
+            <form method="POST" enctype="multipart/form-data" class="d-flex gap-3 justify-content-start align-items-stretch">
+                {% csrf_token %}
+                <select name="competence" class="form-select">
+                    {% for competence in competences_list %}
+                        <option value={{ competence }}>{{ competence }}</option>
+                    {% endfor %}
+                </select>
+                <input type="range" class="form-range" min="0" max="5" step="0.5" name="value" id="customRange3">
+                <button type="submit" class="btn btn-outline-primary"> Ajouter</button>
+            </form>
             <div class="d-grid" style="display: grid;
                 grid-template-columns: repeat(2, 1fr);
                 row-gap: 10px;
                 column-gap: 5%;">
-                {% for competence in utilisateur.competence %}
+                {% for key, value in competences.items %}
                     <div class="p-2">
-                        <p>{{ competence.name }}:</p>
+                        <p>{{ key }}:</p>
                         <div class="progress ">
-                            <div class="progress-bar" role="progressbar" style="width: {{ competance.value }}%"
-                                 aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar" role="progressbar" style="width: {{ value }}%" aria-valuenow="0"
+                                 aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                 {% endfor %}
             </div>
         </div>
+    </div>
+
     </div>
 
 {% endblock %}
