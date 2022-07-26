@@ -52,7 +52,7 @@
 
             {% if user.is_authenticated %}
             <li class="nav-item mx-2">
-                <a class="nav-link text-primary" href="{% url 'account_email' %}">Change E-mail</a>
+                <a class="nav-link text-primary" href="{% url 'utilisateur' %}">{{ user.username }}</a>
             </li>
 
             <li class="nav-item mx-2">
