@@ -1,6 +1,6 @@
+from distutils.command.upload import upload
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
 
 # Create your models here.
 
@@ -16,8 +16,10 @@ class LocalUser(AbstractUser):
     last_name = models.CharField(max_length=100)
     date_naissance = models.DateField(blank=True, null=True)
     pseudo_discord = models.CharField(max_length=100, blank=True, null=True)
+    github = models.URLField(blank=True, null=True)
+    photo = models.ImageField(upload_to='static/img/user', blank=True, null=True)
+    date_fst_adhesion = models.DateField(blank=True, null=True)
+    date_last_adhesion = models.DateField(blank=True, null=True)
     github = models.CharField(max_length=100, blank=True, null=True)
-    img = models.URLField(
-        default="https://st4.depositphotos.com/1012074/20946/v/450/depositphotos_209469984-stock-illustration-flat-isolated-vector-illustration-icon.jpg")
     competences = models.JSONField(default={})
     credit = models.IntegerField(default=0)
