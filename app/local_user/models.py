@@ -23,3 +23,4 @@ class LocalUser(AbstractUser):
     github = models.CharField(max_length=100, blank=True, null=True)
     competences = models.JSONField(default={}, blank=True, null=True)
     credit = models.IntegerField(default=0)
+
