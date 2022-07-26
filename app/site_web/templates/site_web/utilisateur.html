@@ -24,8 +24,11 @@
                 </div>
                 <div class="">
                     <p>Nombre de crédit: {{ utilisateur.credit }}</p>
-                    {% if utilisateur.subscriptionDate %}
-                        <p>Date d'adhésion: {{ utilisateur.subscriptionDate }}</p>
+                    {% if utilisateur.date_fst_adhesion %}
+                        <p>Date première adhésion : {{ utilisateur.date_fst_adhesion }}</p>
+                    {% endif %}
+                    {% if utilisateur.date_last_adhesion %}
+                        <p>Date dernière adhésion : {{ utilisateur.date_last_adhesion }}</p>
                     {% endif %}
                 </div>
                 <div class="justify-content-end" style="text-align: end">
