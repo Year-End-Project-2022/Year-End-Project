@@ -1,0 +1,14 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Verify Your E-mail Address" %}{% endblock %}
+
+{% block content %}
+    <h1>{% trans "Verify Your E-mail Address" %}</h1>
+
+    <div class="bg-white rounded shadow p-5 d-flex justify-content-center flex-column">
+        <p class="text-center">{% blocktrans %}Nous vous avons envoyé un e-mail pour vérification. Suivez le lien fourni pour finaliser le processus d'inscription. Si vous ne voyez pas l'e-mail de vérification dans votre boîte de réception principale, vérifiez votre dossier spam. Veuillez nous contacter si vous ne recevez pas l'e-mail de vérification dans les minutes qui suivent.{% endblocktrans %}</p>
+    </div>
+
+{% endblock %}

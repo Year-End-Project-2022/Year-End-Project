@@ -1,0 +1,38 @@
+{% load socialaccount %}
+
+{% get_providers as socialaccount_providers %}
+
+{% for provider in socialaccount_providers %}
+{% if provider.id == "openid" %}
+{% for brand in provider.get_brands %}
+<li class="list-group-item" style="border: none">
+  <a title="{{brand.name}}" 
+     class="socialaccount_provider {{provider.id}} {{brand.id}}" 
+     href="{% provider_login_url provider.id openid=brand.openid_url process=process %}"
+     >{{brand.name}}</a>
+</li>
+{% endfor %}
+{% endif %}
+  <li class="list-group-item" style="border: none">
+
+    {% if provider.name == "Discord" %}
+
+    <a title="{{provider.name}}" class="socialaccount_provider {{provider.id}}" 
+    href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}">
+      <span class="fab fa-discord fa-3x mx-2 couleur-discord"></span>
+    </a>
+
+    {% elif provider.name == "GitHub"%}
+
+    <a title="{{provider.name}}" class="socialaccount_provider {{provider.id}}" 
+    href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}"
+      class="text-decoration-none link-dark">
+        <span class="fab fa-github fa-3x mx-2 link-dark"></span>
+    </a>
+
+    {% else %}
+      <a title="{{provider.name}}" class="socialaccount_provider {{provider.id}}" 
+        href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}">{{provider.name}}</a>
+    {% endif %}
+  </li>
+{% endfor %}
