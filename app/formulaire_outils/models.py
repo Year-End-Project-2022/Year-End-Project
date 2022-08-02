@@ -69,7 +69,7 @@ class OutilsCnc(models.Model, Outils):
 
     outil = models.ForeignKey(
         Outils, on_delete=models.PROTECT, related_name="related_outil")
-    utilisateur = models.ForeignKey(
+    user = models.ForeignKey(
         LocalUser, on_delete=models.PROTECT, related_name="related_user_outil")
     duration = models.IntegerField(blank=True, default=1)
     date = models.DateField()
