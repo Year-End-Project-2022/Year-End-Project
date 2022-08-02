@@ -17,3 +17,11 @@ class OutilsCncCreateForm():
         outils_cnc.date = self.cleaned_data['date']
         outils_cnc.save()
         return outils_cnc
+
+class OutilsCncEditForm(forms.ModelForm):
+    duration = forms.IntegerField(min_value=0,max_value=480 required=True, label="Temps de reservation")
+    date = forms.DateField(required=True, label="Date", widget=forms.TextInput(attrs={'placeholder': 'JJ/MM/AAAA'}))
+    
+    class Meta:
+        model = OutilsCnc
+        fields = ['date', 'duration']
