@@ -347,3 +347,5 @@ app/local_user/migrations/0004_localuser_date_fst_adhesion_and_more.py
 migrations/**
 migrations/**.py
 app/atelier/migrations/0003_seance_animateur_alter_seance_personne_incrit.py
+app/local_user/migrations/0001_initial.py
+app/site_web/migrations/0001_initial.py

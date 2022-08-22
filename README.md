@@ -74,3 +74,13 @@ Le `docker-compose-deploy.yml` sert lui a la mise en production il faut tournée
     yearly = always
     ionice = idle
     ```
+
+
+truc qui reste a faire :
+
+- debug la page de profil (cleanup le template)
+- faire en sorte que l'on peut s’inscrire a un atelier
+- cleanup la galerie d'atelier
+- le gitlab CI/CD
+- refaire la page calendrier
+- pouvoir changer le mdp user dans localuser
