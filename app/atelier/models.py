@@ -67,7 +67,9 @@ class Atelier(models.Model):
     annimateur_possible = models.ManyToManyField(
         LocalUser,
         help_text="liste des personnes capable de faire le cour",
-        related_name="annimateur")
+        related_name="annimateur",
+        blank=True,
+        )
     
     minimum_inscrit = models.IntegerField(default=0,
         help_text="nombre de personnes minimum");
@@ -75,7 +77,9 @@ class Atelier(models.Model):
     presonne_interesse = models.ManyToManyField(
         LocalUser,
         help_text="liste des personnes intéressées",
-        related_name="interresse")
+        related_name="interresse",
+        blank=True,
+        )
     
     def nb_presonne_interesse(self):
         return self.presonne_interesse.count()

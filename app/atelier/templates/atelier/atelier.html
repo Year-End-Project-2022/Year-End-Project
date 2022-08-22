@@ -70,5 +70,14 @@
             </div>
         </div>
     </div>
+    <div class="w-75 mx-auto my-5 text-center">
+        {% if user.is_authenticated %}
+            {% if interested %}
+                <a class="btn btn-primary" href="{% url "interested" name=atelier.titre %}">Plus intéressé</a>
+            {% else %}
+                <a class="btn btn-primary" href="{% url "interested" name=atelier.titre %}">Intéressé</a>
+            {% endif %}
+        {% endif %}
+    </div>
 </div>
 {% endblock %}
