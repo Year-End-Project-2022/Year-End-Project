@@ -12,7 +12,7 @@ class OutilsCncCreateForm():
     def save(self, request):
         outils_cnc = super(OutilsCncCreateForm, self).save(request)
         outils_cnc.user = self.cleaned_data['user']
-        outils_cnc.outils_cnc = self.cleaned_data['user']
+        outils_cnc.outils_cnc = self.cleaned_data['outil_cnc']
         outils_cnc.duration = self.cleaned_data['duration']
         outils_cnc.date = self.cleaned_data['date']
         outils_cnc.save()
@@ -25,3 +25,9 @@ class OutilsCncEditForm(forms.ModelForm):
     class Meta:
         model = OutilsCnc
         fields = ['date', 'duration']
+    
+    def save(self, request):
+        outils_cnc.duration = self.cleaned_data['duration']
+        outils_cnc.date = self.cleaned_data['date']
+        outils_cnc.save()
+        return outils_cnc
