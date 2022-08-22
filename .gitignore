@@ -335,3 +335,10 @@ app/atelier/migrations/0004_remove_seance_dates_seance_dates.py
 app/atelier/migrations/0005_remove_seance_dates_session_seance.py
 app/atelier/migrations/0006_atelier_presonne_interesse_and_more.py
 app/local_user/migrations/0004_localuser_date_fst_adhesion_and_more.py
+.idea/.gitignore
+.idea/dataSources.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/Year-End-Project.iml
+.idea/inspectionProfiles/profiles_settings.xml
