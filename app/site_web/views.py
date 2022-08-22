@@ -120,3 +120,12 @@ def edit_utilisateur(request):
             'competences_list': competences_list,
 
         })
+
+@login_required
+def delete_competence(request):
+    if request.method == 'GET':
+        competence = request.GET.get('competence')
+        del request.user.competences[competence]
+        request.user.save()
+        messages.success(request, 'Your competence is updated successfully')
+    return HttpResponseRedirect('edit_utilisateur')
