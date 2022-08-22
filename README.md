@@ -1,12 +1,12 @@
 # site du Lab
 
-Bienvenu sur le dépôt gitlab du site internet du labouest le fablab de la roche sur yon
+Bienvenue sur le dépôt gitlab du site internet du Labouest le fablab de la Roche-sur-Yon.
 
-L'idée est de crées un ensemble d'outils pour automatisé centraliser et aider la gestion du lieu a travers sont site internet
+L'idée est de créer un ensemble d'outils pour automatiser, centraliser et aider à la gestion du lieu à travers son site internet.
 
-un des premier objectif et de crée un formulaire pour l'invertaire d'outils présent dans le lieux
+Un des premier objectif et de créer un formulaire pour l'invertaire d'outils présents dans le lieux.
 
-par la suite on peut crée un autre formulaire pour les fraise des CNC
+Par la suite on peut créer un autre formulaire pour les fraises des CNC
 
 on pourrait aussi faire le site du lab
 
