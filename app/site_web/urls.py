@@ -19,8 +19,6 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('news', views.news, name='news'),
-    path('ateliers', views.ateliers, name='ateliers'),
-    path('atelier/<str:name>', views.atelier, name='atelier'),
     path('calendrier', views.calendrier, name='calendrier'),
     path('machines', views.machines, name='machines'),
     path('tarifs', views.tarifs, name='tarifs'),
@@ -29,5 +27,6 @@ urlpatterns = [
     path('about', views.about, name='about'),
     path('utilisateur', views.utilisateur, name='utilisateur'),
     path('edit_utilisateur', views.edit_utilisateur, name='edit_utilisateur'),
-    path('delete_competence', views.delete_competence, name='delete_competence')
+    path('delete_competence', views.delete_competence, name='delete_competence'),
+    path('calendar', views.CalendarView.as_view(), name='calendar'),
 ]

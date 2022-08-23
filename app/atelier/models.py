@@ -1,23 +1,6 @@
 from django.db import models
 from django.utils.html import format_html
-
-
-class ImageGalerie(models.Model):
-
-    titre = models.CharField(max_length=200)
-
-    alt = models.TextField(blank=True, null=True)
-
-    image = models.ImageField(upload_to='static/img/galerie')
-
-    def __str__(self):
-        return self.titre
-
-    def admin_photo(self):
-        return format_html('<img src="{}" width="100" height="100" />'
-                           .format(self.image.url))
-    admin_photo.short_description = 'Image'
-    admin_photo.allow_tags = True
+from local_user.models import LocalUser
 
 
 class Theme(models.Model):
@@ -26,30 +9,22 @@ class Theme(models.Model):
     def __str__(self):
         return self.titre
 
-
 class Publique(models.Model):
     titre = models.CharField(max_length=200)
 
     def __str__(self):
         return self.titre
-
-
+    
 class Niveau(models.Model):
     titre = models.CharField(max_length=200)
 
     def __str__(self):
         return self.titre
 
-
-class PersonneDispo(models.Model):
-    nom = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.nom
-
-
 class Atelier(models.Model):
-
+    
+    publier = models.BooleanField(default=False)
+    
     titre = models.CharField(max_length=200, help_text="titre de l'atelier")
 
     theme = models.ForeignKey(Theme, on_delete=models.PROTECT,
@@ -90,8 +65,24 @@ class Atelier(models.Model):
         (besoins d'une machine sur place)""")
 
     annimateur_possible = models.ManyToManyField(
-        PersonneDispo,
-        help_text="liste des personnes capable de faire le cour   ")
+        LocalUser,
+        help_text="liste des personnes capable de faire le cour",
+        related_name="annimateur",
+        blank=True,
+        )
+    
+    minimum_inscrit = models.IntegerField(default=0,
+        help_text="nombre de personnes minimum");
+    
+    presonne_interesse = models.ManyToManyField(
+        LocalUser,
+        help_text="liste des personnes intéressées",
+        related_name="interresse",
+        blank=True,
+        )
+    
+    def nb_presonne_interesse(self):
+        return self.presonne_interesse.count()
 
     def points_list(self):
         return self.point_abordes.split('\n')
@@ -103,9 +94,41 @@ class Atelier(models.Model):
         return self.titre
 
     def admin_photo(self):
-        return format_html('<photo src="{}" width="100" height="100" />'
+        return format_html('<img src="{}" width="100" height="100" />'
                            .format(self.miniature.url))
 
     admin_photo.short_description = 'Miniature'
 
     admin_photo.allow_tags = True
+
+    
+class Seance(models.Model):
+    titre = models.CharField(max_length=200, default="",)
+    atelier = models.ForeignKey(Atelier,
+                                on_delete=models.PROTECT,
+                                default=None,
+                                null=True,
+                                blank=True)
+    
+    personne_incrit = models.ManyToManyField(LocalUser,
+                                             blank=True,
+                                             related_name="incrit")
+    
+    animateur = models.ForeignKey(LocalUser,
+                                  on_delete=models.PROTECT,
+                                  default=None,
+                                  null=True,
+                                  blank=True,
+                                  related_name="animateur",
+                                  help_text="animateur responsable de la séance")
+    
+    def nb_incrit(self):
+        return self.personne_incrit.count()
+
+class Session(models.Model):
+    date = models.DateField(help_text="date de la séance",)
+    
+    seance = models.ForeignKey(Seance, on_delete=models.CASCADE, default=None)
+    
+    def __str__(self):
+        return self.date.strftime("%d/%m/%Y")

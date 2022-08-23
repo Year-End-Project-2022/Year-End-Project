@@ -23,5 +23,5 @@ urlpatterns = [
     path('', include('site_web.urls')),
     path('export/', include('formulaire_outils.urls')),
     path('accounts/', include('allauth.urls')),
-    
+    path('atelier/', include('atelier.urls')),
 ]
