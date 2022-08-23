@@ -67,7 +67,13 @@
                 column-gap: 5%;">
                 {% for key, value in competences.items %}
                     <div class="p-2">
-                        <p>{{ key }}:</p>
+                    <div style="display: flex;
+    justify-content: space-between;">
+                        <p style="margin: 0">{{ key }}:</p>
+                        <a href="{% url 'delete_competence' %}?competence={{ key }}">
+                            <img src="{% static 'SVG/xmark.svg' %}" style="width: 1rem">
+                        </a>
+                    </div>
                         <div class="progress ">
                             <div class="progress-bar" role="progressbar" style="width: {{ value }}%" aria-valuenow="0"
                                  aria-valuemin="0" aria-valuemax="100"></div>
