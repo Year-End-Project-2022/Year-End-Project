@@ -1,0 +1,19 @@
+{% extends 'outils/base.html' %}
+
+{% block content %}
+    <b>{{ outil }}</b>
+    <br>
+    {{ outil.type }}
+    <br>
+    Taille : {{ outil.taille }}
+    <br>
+    Marque : {{ outil.marque }}
+    <br>
+    Categorie : {{ outil.Categorie }}
+    <br>
+    Commentaire : {{ outil.Commentaire }}
+    <hr>
+    <img src="{{ outil.image }}" alt="outil image" height="300px">
+    <br>
+    <img src="{{ outil.image_cote }}" alt="outil image cote" height="300x">
+{% endblock content %}

@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'site_web.apps.SiteWebConfig',
     'formulaire_outils.apps.FormulaireOutilsConfig',
     'import_export',
+    'xhtml2pdf'
 ]
 
 MIDDLEWARE = [
