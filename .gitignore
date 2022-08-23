@@ -331,11 +331,6 @@ app/static/img/atelier/*
 PasswordDB.txt
 
 .env
-app/atelier/migrations/0003_seance_titre_alter_seance_atelier.py
-app/atelier/migrations/0004_remove_seance_dates_seance_dates.py
-app/atelier/migrations/0005_remove_seance_dates_session_seance.py
-app/atelier/migrations/0006_atelier_presonne_interesse_and_more.py
-app/local_user/migrations/0004_localuser_date_fst_adhesion_and_more.py
 .idea/.gitignore
 .idea/dataSources.xml
 .idea/misc.xml
@@ -344,9 +339,4 @@ app/local_user/migrations/0004_localuser_date_fst_adhesion_and_more.py
 .idea/Year-End-Project.iml
 .idea/inspectionProfiles/profiles_settings.xml
 
-migrations/**
-migrations/**.py
-app/atelier/migrations/0003_seance_animateur_alter_seance_personne_incrit.py
-app/local_user/migrations/0001_initial.py
-app/site_web/migrations/0001_initial.py
 app/atelier/models.py
