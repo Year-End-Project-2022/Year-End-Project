@@ -1,0 +1,126 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block titre %}Lab-Ouest About{% endblock %}
+
+{% block body %}
+
+<div class="mx-auto corps fiche-atelier">
+
+    <div class="d-flex my-5 mx-auto pr-5">
+
+        <div class="w-50 mx-auto text-center">
+            <img src="{% static 'img/logo.jpg' %}" class="w-50">
+        </div>
+
+        <div class="w-50 mx-auto text-center">
+            <h1 class="titre text-center my-auto ml-5">LES ATELIERS</h1>
+        </div>
+
+    </div>
+
+    <hr class="solid">
+
+    <headers class="mx-auto pr-5">
+
+        <div class="w-75 mx-auto">
+            <h3 class="mt-3">Thème {{atelier.theme}}</h3>
+        </div>
+
+        <div class="w-75 mx-auto">
+            <h4 class="my-auto pl-3 text-secondary titre-atelier">{{atelier.titre}}</h4>
+        </div>
+
+    </headers>
+    <div class="text-center my-3">
+        <img src="{{ atelier.image.url }}" class="mx-auto w-75 image-atelier">
+        <img src="{{ atelier.miniature.url}}" class="minia-atelier"
+            style="display: none;">
+    </div>
+
+    <div class="w-75 mx-auto my-5">
+        <h5 class="my-3 titre">OBJECTIF</h5>
+
+        <p>
+            {{atelier.objectif}}
+        </p>
+        <div class="flexbox-telephone">
+
+            <div class="flex-telephone-div w-50">
+                <h5 class="my-3 titre">POINTS ABORDES</h5>
+                <ul>
+                    {% for point in atelier.points_list %}
+                        <li>{{point}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="flex-telephone-div w-50 public-niveau">
+                <div class="mb-5 public">
+                    <h5 class="my-3 titre">PUBLIC</h5>
+
+                    <p>{{atelier.publique}}</p>
+                </div>
+
+                <div class="mt-5 niveau">
+                    <h5 class="my-3 titre">NIVEAU</h5>
+
+                    <p>{{atelier.niveau}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-75 mx-auto">
+        <h5 class="my-3 titre">INSCRIPTION :</h5>
+    </div>
+    <div class="w-75 mx-auto my-5">
+
+        {% if user.is_authenticated %}
+            
+            <div class="flexbox-telephone">
+                <div class="flex-telephone-div w-50">
+                    <p>Seriez-vous intéressé à participer ? <br> faites-le-nous savoir :</p>
+                    {% if interested %}
+                        <a class="btn btn-danger" href="{% url "interested" name=atelier.titre %}">Plus intéressé</a>
+                    {% else %}
+                        <a class="btn btn-primary" href="{% url "interested" name=atelier.titre %}">Intéressé</a>
+                    {% endif %}
+                </div>
+
+                <div class="flex-telephone-div w-50">
+                    <p class="mb-2">session disponible :</p>
+                    {% if seances %}
+                        <table class="table">
+                            <tbody>
+                                {% for seance in seances %}
+                                    <tr>
+                                        <td>
+                                            {% if seance.2 %}
+                                                <button class="btn btn-primary" disabled>inscrit</button>
+                                            {% else %}
+                                                <a class="btn btn-primary mr-5" href="{% url "subscribed" name=atelier.titre %}?seance={{seance.0.id}}">Inscription</a>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% for session in seance.1 %}
+                                                {{session.date|date:"d/m/y" }},
+                                            {% endfor %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <p class="my-2">pour les dés-inscriptions veuillez nous connecter par mail ou sur discord</p>
+                    {% else %}
+                        Aucune séance disponible pour l'instant.
+                    {% endif %}
+                </div>
+            </div>
+        {% else %}
+            <p>Pour vous inscrire a un atelier créé vous un compte ou connectez-vous :</p>
+            <a class="btn btn-primary mx-5" href="{% url 'account_login' %}">Connexion</a>
+            <a class="btn btn-primary mx-5" href="{% url 'account_signup' %}">Inscription</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

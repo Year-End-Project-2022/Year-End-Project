@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'import_export',
     'xhtml2pdf'
     'local_user',
+    'atelier',
 
     'django.contrib.sites',
 
@@ -155,7 +156,7 @@ AUTHENTICATION_BACKENDS = [
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME':
-            """django.contrib.auth.password_validation.UserAttributeSimilarityValidator""",
+            'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
         'NAME':
@@ -207,3 +208,7 @@ if not DEBUG:
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
