@@ -79,12 +79,6 @@ Le `docker-compose-deploy.yml` sert lui a la mise en production il faut tournée
 truc qui reste a faire :
 
 - debug la page de profil (cleanup le template)
-- faire en sorte que l'on peut s’inscrire a un atelier
 - cleanup la galerie d'atelier
 - le gitlab CI/CD
 - pouvoir changer le mdp user dans localuser
-
-demain :
-
-metre un truc pour s'incrire a une séance sur un atelier avec la liste des séance dispo et la liste des séssion
-penser a mettre le nombre de place restante

@@ -90,14 +90,27 @@
                 <div class="flex-telephone-div w-50">
                     <p class="mb-2">session disponible :</p>
                     {% if seances %}
-                        {% for seance in seances %}
-                        <li>
-                            {{seance.0.titre}} : 
-                            {% for session in seance.1 %}
-                                {{session.date|date:"d/m/y" }},
-                            {% endfor %}
-                        </li>
-                        {% endfor %}
+                        <table class="table">
+                            <tbody>
+                                {% for seance in seances %}
+                                    <tr>
+                                        <td>
+                                            {% if seance.2 %}
+                                                <button class="btn btn-primary" disabled>inscrit</button>
+                                            {% else %}
+                                                <a class="btn btn-primary mr-5" href="{% url "subscribed" name=atelier.titre %}?seance={{seance.0.id}}">Inscription</a>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% for session in seance.1 %}
+                                                {{session.date|date:"d/m/y" }},
+                                            {% endfor %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <p class="my-2">pour les dés-inscriptions veuillez nous connecter par mail ou sur discord</p>
                     {% else %}
                         Aucune séance disponible pour l'instant.
                     {% endif %}

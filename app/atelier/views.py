@@ -25,6 +25,10 @@ def atelier(request, name):
                 tempTab = []
                 tempTab.append(all_seance_obj[i])
                 tempTab.append(session_futur)
+                if request.user in all_seance_obj[i].personne_incrit.all():
+                    tempTab.append(True)
+                else :
+                    tempTab.append(False)
                 seance_obj.append(tempTab)
 
         interrested = False
@@ -56,5 +60,15 @@ def interested(request,name):
         else :
             atelier_obj.presonne_interesse.add(request.user)
     except Atelier.DoesNotExist:
+        return redirect('index')
+    return redirect('atelier',name)
+
+
+@login_required
+def subscribed(request,name):
+    try:
+        seance_obj = Seance.objects.get(id=request.GET.get('seance'))
+        seance_obj.personne_incrit.add(request.user)
+    except Seance.DoesNotExist:
         return redirect('index')
     return redirect('atelier',name)

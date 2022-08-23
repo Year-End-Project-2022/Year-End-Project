@@ -7,4 +7,5 @@ urlpatterns = [
     path('ateliers', views.ateliers, name='ateliers'),
     path('atelier/<str:name>', views.atelier, name='atelier'),
     path('atelier/<str:name>/interested', views.interested, name="interested"),
+    path('atelier/<str:name>/subscribed', views.subscribed, name="subscribed")
 ]
