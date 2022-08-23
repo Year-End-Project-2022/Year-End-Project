@@ -52,11 +52,9 @@ INSTALLED_APPS = [
     'site_web.apps.SiteWebConfig',
     'formulaire_outils.apps.FormulaireOutilsConfig',
     'import_export',
-    'xhtml2pdf'
+    'xhtml2pdf',
     'local_user',
-
     'django.contrib.sites',
-
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
