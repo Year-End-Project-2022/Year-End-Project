@@ -51,11 +51,11 @@ INSTALLED_APPS = [
 
     'site_web.apps.SiteWebConfig',
     'formulaire_outils.apps.FormulaireOutilsConfig',
+    'import_export',
+    'xhtml2pdf',
     'local_user',
     'atelier',
-
     'django.contrib.sites',
-
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -122,7 +122,7 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-if DEBUG or sys.argv[1] == 'test':
+if DEBUG:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -136,7 +136,7 @@ else:
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'postgres',
             'USER': 'postgres',
-            'PASSWORD': PASSDB,
+            'PASSWORD': 'test',
             'HOST': 'db',
             'PORT': '5432',
         }

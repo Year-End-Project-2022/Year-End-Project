@@ -1,29 +1,31 @@
-FROM python:3.9-alpine
+FROM python:3.9-alpine3.13
 
-ENV PATH="/scripts:${PATH}"
+
+ENV PYTHONUNBUFFERED 1
 
 COPY ./requirements.txt /requirements.txt
-RUN apk add --update --no-cache --virtual .tmp gcc libc-dev linux-headers
-RUN apk add --update --no-cache --virtual python3-dev jpeg-dev zlib-dev postgresql-dev gcc python3-dev musl-dev
-RUN pip install -r /requirements.txt
-RUN apk del .tmp
-
-RUN mkdir /app
 COPY ./app /app
-WORKDIR /app
-
 COPY ./scripts /scripts
 
-RUN chmod +x /scripts/*
+WORKDIR /app
+EXPOSE 8000
 
-RUN mkdir -p /vol/web/media
-RUN mkdir -p /vol/web/static
+RUN python -m venv /py && \
+    /py/bin/pip install --upgrade pip && \
+    apk add --update --no-cache postgresql-client && \
+    apk add --update --no-cache --virtual .tmp-deps \
+    build-base postgresql-dev musl-dev linux-headers && \
+    /py/bin/pip install -r /requirements.txt && \
+    apk del .tmp-deps && \
+    adduser --disabled-password --no-create-home app && \
+    mkdir -p /vol/web/static && \
+    mkdir -p /vol/web/media && \
+    chown -R app:app /vol && \
+    chmod -R 755 /vol && \
+    chmod -R +x /scripts
 
-RUN adduser -D user
+ENV PATH="/scripts:/py/bin:$PATH"
 
-RUN chown -R user:user /vol
-RUN chmod -R 755 /vol/web
+USER app
 
-USER user
-
-CMD ["entrypoint.sh"]
+CMD ["run.sh"]
