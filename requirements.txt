@@ -7,3 +7,5 @@ django-import-export
 psycopg2-binary
 reportlab===3.6.0
 xhtml2pdf
+django-allauth==0.51.0
+

@@ -28,7 +28,7 @@ class GroupeResource(resources.ModelResource):
 class CategoriesAdmin(ImportExportModelAdmin):
     resource_class = CategoriesResource
 
-admin.site.register(Categories, CategoriesAdmin)
+
 
 class OutilsAdmin(ImportExportModelAdmin):
     resource_class = OutilsResource
@@ -41,15 +41,42 @@ class OutilsAdmin(ImportExportModelAdmin):
             ','.join(str(id) for id in selected),
         ))
 
-admin.site.register(Outils, OutilsAdmin)
+
 
 class MediaAdmin(ImportExportModelAdmin):
     resource_class = MediaResource
 
-admin.site.register(Media, MediaAdmin)
+
 
 class GroupeAdmin(ImportExportModelAdmin):
     resource_class = GroupeResource
 
+
+class OutilsAdmin(admin.ModelAdmin):
+    list_display = ('nom_func',
+                    'nombre',
+                    'nombre_hs',
+                    'groupe'
+                    )
+
+    list_filter = ('categories',
+                   'groupe',
+                   'taille',
+                   'marque',
+                   )
+
+    search_fields = ('nom',
+                     'type',
+                     'taille',
+                     'categories__title',
+                     'nombre',
+                     'nombre_hs',
+                     'groupe__nom',
+                     'commentaire',
+                     )
+
+admin.site.register(Outils, OutilsAdmin)
+admin.site.register(Categories, CategoriesAdmin)
+admin.site.register(Media, MediaAdmin)
 admin.site.register(Groupe, GroupeAdmin)
 
