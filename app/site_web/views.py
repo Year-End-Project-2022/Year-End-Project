@@ -74,15 +74,12 @@ def utilisateur(request):
 def edit_utilisateur(request):
     if request.method == 'POST':
         user_form = UserEditForm(request.POST, request.FILES, instance=request.user)
-        print('request :')
-        print(request.POST)
 
         if 'competence' in request.POST and 'value' in request.POST and 0 < float(request.POST['value']) <= 5:
             competence = request.POST['competence']
             value = request.POST['value']
             request.user.competences[competence] = int(float(value) * 20)
             request.user.save()
-        #  print({'competence': competence_form.competence, 'value': competence_form.value * 20})
         if user_form.is_valid():
             user_form.save()
             messages.success(request, 'Your profile is updated successfully')

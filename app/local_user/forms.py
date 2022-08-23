@@ -37,7 +37,5 @@ class CompetenceForm(forms.Form):
     qs = Competence.objects.all().values_list('name', flat=True)
 
     competence_list = ['CSS']
-    print('competence_list')
-    print(competence_list)
     competence = forms.ChoiceField(choices=competence_list, label='Compétence :')
     value = forms.IntegerField(min_value=0, max_value=5, label='Niveau (entre 1 à 5):', required=False)
