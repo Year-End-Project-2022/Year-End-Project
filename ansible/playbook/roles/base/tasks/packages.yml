@@ -5,7 +5,7 @@
       - git
       - curl
       - unzip
-      - docker
+      - docker.io
       - docker-compose
     state: present
     update-cache: yes

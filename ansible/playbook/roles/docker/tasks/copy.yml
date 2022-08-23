@@ -1,5 +1,6 @@
 - name: Copy the python application
   ansible.builtin.copy: 
-    src: ../../../app/
-    dest: "/var/www/{{ server_name }}"
-  when: check_symfony_site_exists.stat.exists == false
+    src: ../../../../app_python/
+    dest: "/home/ubuntu/app_python"
+
+
