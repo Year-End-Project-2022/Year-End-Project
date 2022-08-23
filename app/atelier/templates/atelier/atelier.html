@@ -70,13 +70,43 @@
             </div>
         </div>
     </div>
-    <div class="w-75 mx-auto my-5 text-center">
+    <div class="w-75 mx-auto">
+        <h5 class="my-3 titre">INSCRIPTION :</h5>
+    </div>
+    <div class="w-75 mx-auto my-5">
+
         {% if user.is_authenticated %}
-            {% if interested %}
-                <a class="btn btn-primary" href="{% url "interested" name=atelier.titre %}">Plus intéressé</a>
-            {% else %}
-                <a class="btn btn-primary" href="{% url "interested" name=atelier.titre %}">Intéressé</a>
-            {% endif %}
+            
+            <div class="flexbox-telephone">
+                <div class="flex-telephone-div w-50">
+                    <p>Seriez-vous intéressé à participer ? <br> faites-le-nous savoir :</p>
+                    {% if interested %}
+                        <a class="btn btn-danger" href="{% url "interested" name=atelier.titre %}">Plus intéressé</a>
+                    {% else %}
+                        <a class="btn btn-primary" href="{% url "interested" name=atelier.titre %}">Intéressé</a>
+                    {% endif %}
+                </div>
+
+                <div class="flex-telephone-div w-50">
+                    <p class="mb-2">session disponible :</p>
+                    {% if seances %}
+                        {% for seance in seances %}
+                        <li>
+                            {{seance.0.titre}} : 
+                            {% for session in seance.1 %}
+                                {{session.date|date:"d/m/y" }},
+                            {% endfor %}
+                        </li>
+                        {% endfor %}
+                    {% else %}
+                        Aucune séance disponible pour l'instant.
+                    {% endif %}
+                </div>
+            </div>
+        {% else %}
+            <p>Pour vous inscrire a un atelier créé vous un compte ou connectez-vous :</p>
+            <a class="btn btn-primary mx-5" href="{% url 'account_login' %}">Connexion</a>
+            <a class="btn btn-primary mx-5" href="{% url 'account_signup' %}">Inscription</a>
         {% endif %}
     </div>
 </div>

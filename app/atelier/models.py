@@ -126,9 +126,9 @@ class Seance(models.Model):
         return self.personne_incrit.count()
 
 class Session(models.Model):
-    date = models.DateField(help_text="date de la séance")
+    date = models.DateField(help_text="date de la séance",)
     
-    seance = models.ForeignKey(Seance, on_delete=models.CASCADE, default=None, null=True, blank=True)
+    seance = models.ForeignKey(Seance, on_delete=models.CASCADE, default=None)
     
     def __str__(self):
         return self.date.strftime("%d/%m/%Y")

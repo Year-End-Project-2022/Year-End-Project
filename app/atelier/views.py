@@ -1,6 +1,8 @@
+from datetime import date
 from django.shortcuts import render, redirect
-from .models import Atelier
+from .models import Atelier, Seance, Session
 from django.contrib.auth.decorators import login_required
+
 
 
 def ateliers(request):
@@ -11,8 +13,20 @@ def ateliers(request):
     return render(request, 'atelier/ateliers.html', data)
 
 def atelier(request, name):
+    today = date.today()
     try:
         atelier_obj = Atelier.objects.get(titre=name)
+        all_seance_obj = Seance.objects.filter(atelier=atelier_obj)
+        seance_obj = []
+        for i in range(0, all_seance_obj.count(), 1) :
+            session_past = Session.objects.filter(seance=all_seance_obj[i], date__lt=today)
+            session_futur = Session.objects.filter(seance=all_seance_obj[i], date__gte=today)
+            if session_past.count() == 0 and session_futur.count() != 0:
+                tempTab = []
+                tempTab.append(all_seance_obj[i])
+                tempTab.append(session_futur)
+                seance_obj.append(tempTab)
+
         interrested = False
         listInterested = atelier_obj.presonne_interesse.values()
         if request.user.is_authenticated :
@@ -22,6 +36,7 @@ def atelier(request, name):
         data = {
             'atelier': atelier_obj,
             'interested': interrested,
+            'seances': seance_obj,
         }
     except Atelier.DoesNotExist:
         return redirect('index')
