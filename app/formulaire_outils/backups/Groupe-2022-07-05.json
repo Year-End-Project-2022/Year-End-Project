@@ -1,0 +1,26 @@
+[
+    {
+        "id": 6,
+        "nom": "boite dexter forets"
+    },
+    {
+        "id": 5,
+        "nom": "cliquet (boite verte)"
+    },
+    {
+        "id": 4,
+        "nom": "clé plate"
+    },
+    {
+        "id": 3,
+        "nom": "tournevis penggong"
+    },
+    {
+        "id": 2,
+        "nom": "cale"
+    },
+    {
+        "id": 1,
+        "nom": "visseuse"
+    }
+]

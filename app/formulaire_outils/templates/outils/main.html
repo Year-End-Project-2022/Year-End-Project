@@ -1,0 +1,15 @@
+{% extends 'outils/base.html' %}
+
+{% block title %}
+    Outil info
+{% endblock title %}
+
+{% block content %}
+    {% for Outil in object_list %}
+        <div style="padding: 1rem;" class="outils">
+            {{ outils }} 
+            <a href="{% url 'outil_pdf_view' outil.id%}" target="_blank"><button class="btn btn-primary">Download pdf</button></a>
+            <hr>
+        </div>
+    {% endfor %}
+{% endblock content %}
