@@ -10,9 +10,9 @@ services:
       - static-data:/vol/web
     environment:
       - DB_HOST=db
-      - DB_NAME=postgres
-      - DB_USER=postgres
-      - DB_PASS=test
+      - DB_NAME=$(DB_NAME)
+      - DB_USER=$(DB_USER)
+      - DB_PASS=$(DB_PASS)
       - ALLOWED_HOSTS=localhost,*,192.168.241.112,172.24.0.1
     depends_on:
       - db
@@ -23,9 +23,9 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=test
+      - POSTGRES_DB=db
+      - POSTGRES_USER=$(DB_USER)
+      - POSTGRES_PASSWORD=$(DB_PASS)
   proxy:
     build:
       context: ./proxy
