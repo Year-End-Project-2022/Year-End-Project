@@ -11,7 +11,6 @@ def listview(request):
 def outil_render_pdf_view(request, *args, **kwargs):
     id = kwargs.get('id')
     outil = get_object_or_404(Outils, id=id)
-    print(outil.image)
     template_path = 'outils/generate_pdf.html'
     context = {'outil': outil}
     # Create a Django response object, and specify content_type as pdf
