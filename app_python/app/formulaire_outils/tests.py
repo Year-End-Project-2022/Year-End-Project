@@ -14,7 +14,7 @@ class FormulaireOutilsTest(TestCase):
         image = SimpleUploadedFile(
             name='test_image.jpg',
             content=open(
-                './Imgtest.jpeg', 'rb').read(), content_type='image/jpeg')
+                './app_python/Imgtest.jpeg', 'rb').read(), content_type='image/jpeg')
 
         med = Media.objects.create(image=image)
 
