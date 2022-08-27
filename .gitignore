@@ -324,7 +324,7 @@ $RECYCLE.BIN/
 
 db/
 
-static/
+app/static/photo/*
 
 app/static/img/galerie/*
 app/static/img/atelier/*

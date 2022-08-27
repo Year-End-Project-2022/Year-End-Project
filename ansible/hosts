@@ -1,0 +1,7 @@
+[ubuntu]
+146.59.235.165
+
+[ubuntu:vars]
+ansible_user=ubuntu
+ansible_ssh_pass=3FuRutTteeV8
+ansible_python_interpreter=/usr/bin/python3

@@ -1,0 +1,11 @@
+- name: Installing packages
+  apt:
+    name: 
+      - apt-transport-https
+      - git
+      - curl
+      - unzip
+      - docker.io
+      - docker-compose
+    state: present
+    update-cache: yes

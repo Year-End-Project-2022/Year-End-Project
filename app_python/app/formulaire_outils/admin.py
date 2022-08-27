@@ -52,7 +52,7 @@ class GroupeAdmin(ImportExportModelAdmin):
     resource_class = GroupeResource
 
 
-class OutilsAdmin(admin.ModelAdmin):
+class OutilsAdmin(ImportExportModelAdmin):
     list_display = ('nom_func',
                     'nombre',
                     'nombre_hs',

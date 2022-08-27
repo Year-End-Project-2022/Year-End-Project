@@ -1,0 +1,7 @@
+---
+
+- hosts: ubuntu
+  become: True
+  roles:
+    - base
+    - docker
