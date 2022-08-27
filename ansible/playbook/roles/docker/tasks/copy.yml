@@ -1,12 +1,12 @@
 - name: Check if python app exists
-  stat: path=/home/ubuntu/app_python
+  stat: path=/home/{{ ansible_user }}/app_python
   register: check_symfony_site_exists
 
 - name: Copy the python application
   ansible.builtin.copy: 
     src: ../../../../app_python/
-    dest: "/home/ubuntu/app_python"
+    dest: "/home/{{ ansible_user }}/app_python"
   when: check_symfony_site_exists.stat.exists == false
 
 - name: Execute docker-compose up
-  ansible.builtin.command: docker-compose -f /home/ubuntu/app_python/docker-compose-deploy.yml up --build -d
+  ansible.builtin.command: docker-compose -f /home/{{ansible_user}}/app_python/docker-compose-deploy.yml up --build -d
