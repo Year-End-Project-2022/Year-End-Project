@@ -42,8 +42,8 @@ jobs:
     - name: Install Dependencies
       run: |
         pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install -r localRequirement.txt
+        pip install -r app_python/requirements.txt
+        pip install -r app_python/localRequirement.txt
     - name: Run Tests
       env:
         DEBUG: 1
@@ -52,4 +52,4 @@ jobs:
         DB_PORT: ${{ matrix.db_port }}
         DB_PASSWORD: hunter2
       run: |
-        python app/manage.py test ./app
+        python app_python/app/manage.py test ./app_python/app

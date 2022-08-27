@@ -1,0 +1,2 @@
+- name: Play base.yml
+  import_playbook: ./playbook/base.yml 
