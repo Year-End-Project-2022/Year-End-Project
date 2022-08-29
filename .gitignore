@@ -159,7 +159,8 @@ cython_debug/
 *.BACKUP.*
 *.BASE.*
 *.LOCAL.*
-*.REMOTE.*
+*.REMOTE.*./manage.py makemigrations
+./manage.py migrate
 *_BACKUP_*.txt
 *_BASE_*.txt
 *_LOCAL_*.txt
@@ -323,10 +324,19 @@ $RECYCLE.BIN/
 
 db/
 
-static/
+app/static/photo/*
 
 app/static/img/galerie/*
 app/static/img/atelier/*
 PasswordDB.txt
 
 .env
+.idea/.gitignore
+.idea/dataSources.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/Year-End-Project.iml
+.idea/inspectionProfiles/profiles_settings.xml
+
+app/atelier/models.py

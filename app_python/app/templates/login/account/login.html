@@ -1,0 +1,50 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+
+<h1 class="text-center">{% trans "Sign In" %}</h1>
+
+{% get_providers as socialaccount_providers %}
+
+
+<div class="bg-white rounded shadow p-5 d-flex justify-content-center flex-column">
+  <form class="login mx-auto d-flex justify-content-center flex-column" method="POST" action="{% url 'account_login' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
+    <div class="mx-auto">
+      <a class="button secondaryAction text-center" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+      <br/>
+    </div>
+    <button class="primaryAction btn btn-primary mx-auto mt-2" type="submit">{% trans "Sign In" %}</button>
+  </form>
+
+  {% if socialaccount_providers %}
+
+  
+  <div class="socialaccount_ballot mx-auto mt-2">
+
+    <div class="login-or text-center">{% trans 'or' %}</div>
+    <ul class="socialaccount_providers list-group list-group-horizontal">
+      {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+    </ul>
+
+
+    </div>
+
+{% include "socialaccount/snippets/login_extra.html" %}
+
+{% else %}
+<p>{% blocktrans %}If you have not created an account yet, then please
+<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+{% endif %}
+
+</div>
+{% endblock %}

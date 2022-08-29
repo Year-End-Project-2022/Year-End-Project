@@ -1,0 +1,35 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block titre %}Lab-Ouest Galerie{% endblock %}
+
+{% block body %}
+<div class="w-75 mx-auto corps">
+    <div class="card text-center mx-auto my-3 w-75 border-0">
+        <img src="{% static 'img/logo_index.jpg' %}" class="card-img-top" alt="Logo INDEX">
+    </div>
+
+    <h1 class="text-center mx-auto my-4 titre">LA GALERIE</h1>
+    <h4 class="text-center mx-auto my-3">Vous trouverez ici quelques-unes des créations des membres du Lab</h4>
+    <p class="text-center mx-auto mt-3 mb-5">Venez sur le <a href="https://discord.gg/jcD5eFf" target="blank"
+            class="couleur-discord">Serveur Discord</a> pour retrouver toutes les créations ainsi que leurs
+        propriétaires</p>
+
+    <div class="flexbox-telephone flex-wrap text-center mt-5 mb-3">
+
+        {% for image in images%}
+        <div class="flex-telephone-div galerie mx-auto my-auto mt-5 mb-5 text-center border-0">
+            <div class="shadow-lg mx-auto text-center w-75 bg-white mb-5">
+                <img src="{{ image.image.url }}" class="w-100 rounded" alt="{{ image.alt }}">
+                <div class="text-center py-2">
+                    <p>{{image.titre}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor%}
+    </div>
+
+</div>
+<script src="{% static 'js/rotation_photo.js' %}"></script>
+
+{% endblock %}

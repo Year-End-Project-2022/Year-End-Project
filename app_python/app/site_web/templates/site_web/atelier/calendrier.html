@@ -1,0 +1,20 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block titre %}Lab-Ouest Calendrier{% endblock %}
+
+{% block body %}
+<div class="w-75 mx-auto corps">
+
+    <h1 class="text-center mx-auto my-4 titre">CALENDRIER DES ATELIERS</h1>
+    <h3 class="text-center mx-auto my-3">Les Ateliers sont proposés le <u>mardi soir</u>.</h3>
+
+
+    <div class="mx-auto text-center mt-3 mb-5">
+        <iframe
+            src="{% url "calendar" %}"
+            style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+    </div>
+
+</div>
+{% endblock %}

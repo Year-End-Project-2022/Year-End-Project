@@ -1,0 +1,299 @@
+{% extends 'base.html'%} {% load static %} {% block titre %}Lab-Ouest
+Machines{% endblock %} {% block body %}
+
+<div class="w-75 mx-auto corps">
+    <div class="card text-center mx-auto my-3 w-75 border-0">
+        <img
+            src="{% static 'img/logo_index.jpg' %}"
+            class="card-img-top"
+            alt="Logo INDEX"
+        />
+    </div>
+
+    <h1 class="text-center mx-auto my-4 titre">LES MACHINES</h1>
+    <h4 class="text-center mx-auto my-3">
+        Le Fablab propose un accès à des Machines et Outils à ses adhérents afin
+        que chacun puisse mener à bien son projet
+    </h4>
+    <p class="text-center mx-auto mt-3 mb-5">
+        L'utilisation des machines est encadrée par un adulte responsable.
+    </p>
+
+    <div class="flexbox-telephone text-center mt-5 mb-3">
+        <div
+            class="flex-telephone-div mx-auto my-auto mt-5 text-center border-0"
+        >
+            <h3 class="mx-auto text-center">Les imprimantes 3D</h3>
+
+            <p class="mx-auto text-center">
+                Nous avons 4 imprimantes
+                <a
+                    href="https://www.prusa3d.fr/original-prusa-i3-mk3-fr/"
+                    target="blank"
+                    class="couleur-discord text-decoration-none">PRUSA MK3</a
+                >
+                dont une munie d'un
+                <a
+                    href="https://www.prusa3d.fr/original-prusa-i3-multi-material-2-0/"
+                    target="blank"
+                    class="couleur-discord text-decoration-none">MMU</a
+                >
+                (système de changement de couleur)
+            </p>
+        </div>
+
+        <div
+            class="
+                flex-telephone-div
+                mx-auto
+                my-auto
+                mt-3
+                mb-5
+                text-center
+                border-0
+            "
+        >
+            <div class="shadow-lg mx-auto text-center w-75 bg-white mb-5">
+                <img
+                    src="{% static 'img/machines/imprimantes_3d.jpg' %}"
+                    class="w-100"
+                    alt="Photo des Imprimantes 3D"
+                />
+                <div class="text-center py-2">
+                    <p>Les imprimantes 3D</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flexbox-telephone text-center mt-5 mb-3">
+        <div
+            class="flex-telephone-div mx-auto my-auto mt-5 text-center border-0"
+        >
+            <h3 class="mx-auto text-center">La Découpeuse Laser</h3>
+
+            <p class="mx-auto text-center">
+                Nous avons une découpeuse laser de 135W pour couper carton, bois
+                et autres
+                <br />
+                (les matériaux réfléchissants tels que le métal et le verre sont
+                interdits)
+            </p>
+        </div>
+
+        <div
+            class="
+                flex-telephone-div
+                mx-auto
+                my-auto
+                mt-3
+                mb-5
+                text-center
+                border-0
+            "
+        >
+            <div class="shadow-lg mx-auto text-center w-75 bg-white mb-5">
+                <img
+                    src="{% static 'img/machines/decoupeuse_laser.jpg' %}"
+                    class="w-100"
+                    alt="Photo de la Découpeuse Laser"
+                />
+                <div class="text-center py-2">
+                    <p>La Découpeuse Laser</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flexbox-telephone text-center mt-5 mb-3">
+        <div
+            class="flex-telephone-div mx-auto my-auto mt-5 text-center border-0"
+        >
+            <h3 class="mx-auto text-center">Les CNC</h3>
+
+            <p class="mx-auto text-center">
+                Pour travailler le bois, le plastique et la mousse nous avons
+                deux fraiseuses CNC. Une petite CharlyRobot
+                avec une zone utile de 310x220x160mm. Une grande
+                OpenMakerMachineProXXL avec une zone utile de 850x1000x70mm.
+            </p>
+        </div>
+
+        <div
+            class="
+                flex-telephone-div
+                mx-auto
+                my-auto
+                mt-3
+                mb-5
+                text-center
+                border-0
+            "
+        >
+            <div class="shadow-lg mx-auto text-center w-75 bg-white mb-5">
+                <img
+                    src="{% static 'img/machines/cnc.jpg' %}"
+                    class="w-100"
+                    alt="Photo des CNC"
+                />
+                <div class="text-center py-2">
+                    <p>Les CNC</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flexbox-telephone text-center mt-5 mb-3">
+        <div
+            class="flex-telephone-div mx-auto my-auto mt-5 text-center border-0"
+        >
+            <h3 class="mx-auto text-center">La Découpeuse Vinyle</h3>
+
+            <p class="mx-auto text-center">
+                La découpeuse vinyle permet de fabriquer des stickers, des
+                logos, des étiquettes pour décorer ou afficher ce que vous
+                voulez.
+            </p>
+        </div>
+
+        <div
+            class="
+                flex-telephone-div
+                mx-auto
+                my-auto
+                mt-3
+                mb-5
+                text-center
+                border-0
+            "
+        >
+            <div class="shadow-lg mx-auto text-center w-75 bg-white mb-5">
+                <img
+                    src="{% static 'img/machines/decoupeuse_vinyle.jpg' %}"
+                    class="w-100"
+                    alt="Photo de la Découpeuse Vinyle"
+                />
+                <div class="text-center py-2">
+                    <p>La Découpeuse Vinyle</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flexbox-telephone text-center mt-5 mb-5">
+        <div
+            class="flex-telephone-div mx-auto my-auto mt-5 text-center border-0"
+        >
+            <h3 class="mx-auto text-center">La Presse à Chaud</h3>
+
+            <p class="mx-auto text-center">
+                La Presse à Chaud fait partie des dernières machines à être
+                arrivées au lab.
+                <br />
+                On peut désormais floquer nous propres logos et textes sur nos
+                tissus. <br />
+                <i>(L'option plancha n'est pas disponible)</i>
+            </p>
+        </div>
+
+        <div
+            class="
+                flex-telephone-div
+                mx-auto
+                my-auto
+                mt-3
+                mb-5
+                text-center
+                border-0
+            "
+        >
+            <div class="shadow-lg mx-auto text-center w-75 bg-white mb-5">
+                <img
+                    src="{% static 'img/machines/presse_chaud.jpg' %}"
+                    class="w-100"
+                    alt="Photo de la Presse à Chaud"
+                />
+                <div class="text-center py-2">
+                    <p>La Presse à Chaud</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flexbox-telephone text-center mt-5 mb-3">
+        <div
+            class="flex-telephone-div mx-auto my-auto mt-5 text-center border-0"
+        >
+            <h3 class="mx-auto text-center">Les brodeuses numériques</h3>
+
+            <p class="mx-auto text-center">
+                Couturiers et couturières ne sont pas en reste, le lab propose
+                l'utilisation de brodeuses numériques afin d'ajouter vos logos,
+                images ou textes sur vos vêtements, parfait pour un cadeau de
+                naissance par exemple...
+            </p>
+        </div>
+
+        <div
+            class="
+                flex-telephone-div
+                mx-auto
+                my-auto
+                mt-3
+                mb-5
+                text-center
+                border-0
+            "
+        >
+            <div class="shadow-lg mx-auto text-center w-75 bg-white mb-5">
+                <img
+                    src="{% static 'img/machines/brodeuses.jpg' %}"
+                    class="w-100"
+                    alt="Photo des Brodeuses"
+                />
+                <div class="text-center py-2">
+                    <p>Les Brodeuses</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flexbox-telephone text-center mt-5 mb-3">
+        <div
+            class="flex-telephone-div mx-auto my-auto mt-5 text-center border-0"
+        >
+            <h3 class="mx-auto text-center">La Découpeuse à Fil Chaud</h3>
+
+            <p class="mx-auto text-center">
+                Cette machine, très satisfaisante à observer, découpe des formes
+                ou du texte dans des blocs de mousse. Très utile pour la
+                décoration.
+            </p>
+        </div>
+
+        <div
+            class="
+                flex-telephone-div
+                mx-auto
+                my-auto
+                mt-3
+                mb-5
+                text-center
+                border-0
+            "
+        >
+            <div class="shadow-lg mx-auto text-center w-75 bg-white mb-5">
+                <img
+                    src="{% static 'img/machines/decoupeuse_fil_chaud.jpg' %}"
+                    class="w-100"
+                    alt="Photo des Brodeuses"
+                />
+                <div class="text-center py-2">
+                    <p>La Découpeuse à Fil Chaud</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
