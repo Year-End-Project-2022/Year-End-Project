@@ -18,6 +18,7 @@ Lancement de l'application en local :
 `./app/manage.py runserver`
 
 Accessible à http://127.0.0.1:8000
+Partie admin accessible à http://127.0.0.1:8000/admin
 
 Lancement de l'application via docker : 
 ---------------------
@@ -38,6 +39,7 @@ Lancement de l'application via docker :
 `docker exec -it app_python_app_1 ./manage.py createsuperuser`
 
 Accessible à http://0.0.0.0
+Partie admin accessible à http://0.0.0.0/admin
 
 Déploiement de l'application sur un serveur distant via ansible + docker :
 ---------------------
@@ -50,7 +52,7 @@ Déploiement de l'application sur un serveur distant via ansible + docker :
 `ansible-playbook -i hosts playbook.yml`
 
 Accessible à http://[IP_DISTANTE]
-
+Partie admin accessible à http://[IP_DISTANTE]/admin
 
 
 
