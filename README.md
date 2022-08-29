@@ -82,3 +82,18 @@ truc qui reste a faire :
 - cleanup la galerie d'atelier
 - le gitlab CI/CD
 - pouvoir changer le mdp user dans localuser
+
+
+mettre prix atelier
+
+mettre les date du calendrier en français
+
+rassemblé bulletin d'adhésion et tarrif dans la même page
+
+dans template image galerie metttre titre des images plus grand
+
+dans session disponible mettre nombre de session dans le tableaux
+
+si tes inscrit a une séance faire en sorte qu'il ne puisse pas s'inscrire au autre
+
+chagé le qrcode de mort d'aubin

@@ -4,27 +4,26 @@
 {% block titre %}Lab-Ouest Ateliers{% endblock %}
 
 {% block body %}
-<div class="card text-center mx-auto my-3 w-75 border-0">
-    <img src="{% static 'img/logo_index.jpg' %}" class="card-img-top" alt="Logo INDEX">
-</div>
+<div class="w-75 mx-auto text-center corps">
+    <div class="card text-center mx-auto my-3 w-75 border-0">
+        <img src="{% static 'img/logo_index.jpg' %}" class="card-img-top" alt="Logo INDEX">
+    </div>
 
-<div class="w-50 mx-auto text-center">
-    <h1 class="titre text-center my-5 ml-5">LES ATELIERS DU FABLAB</h1>
-</div>
+    <h1 class="text-center mx-auto mt-4 titre">LES ATELIERS DU FABLAB</h1>
 
-<div class="w-75 mx-auto corps">
+    <div class="w-75 mx-auto corps">
 
-    <h5 class="mx-auto text-center my-3">Voir <a href="{% url 'calendrier' %}">le Calendrier des Ateliers</a></h5>
-    <div class="flexbox-telephone flex-wrap my-5 mx-auto pr-5">
-        {% for atelier in ateliers %}
-            {% if atelier.publier %}
-                <div class="mx-auto text-center flex-telephone-div my-3">
-                    <a class="text-decoration-none" href="{% url 'atelier' atelier.titre %}"><h4>{{atelier.titre}}</h4></a>";
-                    <a class="text-decoration-none" href="{% url 'atelier' atelier.titre %}"><img src="{{ atelier.miniature.url }}" style="height: 70%; width: 70%; object-fit: contain"></a>
-                </div>
-            {% endif %}
-        {% endfor %}
+        <h5 class="mx-auto text-center my-3">Voir <a href="calendrier">Le calendrier des Ateliers</a></h5>
+        <div class="flexbox-telephone flex-wrap my-5 mx-auto pr-5">
+            {% for atelier in ateliers %}
+                {% if atelier.publier %}
+                    <div class="mx-auto text-center flex-telephone-div my-3">
+                        <a class="text-decoration-none" href="{% url 'atelier' atelier.titre %}"><h4>{{atelier.titre}}</h4></a>";
+                        <a class="text-decoration-none" href="{% url 'atelier' atelier.titre %}"><img src="{{ atelier.miniature.url }}" style="height: 70%; width: 70%; object-fit: contain"></a>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
     </div>
 </div>
-
     {% endblock %}

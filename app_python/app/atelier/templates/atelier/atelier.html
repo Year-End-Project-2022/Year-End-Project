@@ -88,7 +88,7 @@
                 </div>
 
                 <div class="flex-telephone-div w-50">
-                    <p class="mb-2">session disponible :</p>
+                    <p class="mb-2">Session disponible :</p>
                     {% if seances %}
                         <table class="table">
                             <tbody>
@@ -98,7 +98,30 @@
                                             {% if seance.2 %}
                                                 <button class="btn btn-primary" disabled>inscrit</button>
                                             {% else %}
-                                                <a class="btn btn-primary mr-5" href="{% url "subscribed" name=atelier.titre %}?seance={{seance.0.id}}">Inscription</a>
+                                                <!-- Button trigger modal -->
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    Inscription
+                                                </button>
+                                                
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Confirmer l'inscription</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                        Confirmer l'inscription à cette séance. <i>(définitif)</i>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                                        <a class="btn btn-primary mr-5" href="{% url "subscribed" name=atelier.titre %}?seance={{seance.0.id}}">S'inscrire</a>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                </div>
+
                                             {% endif %}
                                         </td>
                                         <td>
@@ -110,7 +133,7 @@
                                 {% endfor %}
                             </tbody>
                         </table>
-                        <p class="my-2">pour les dés-inscriptions veuillez nous connecter par mail ou sur discord</p>
+                        <p class="my-2">Pour les dés-inscriptions veuillez nous contacter par mail ou sur discord.</p>
                     {% else %}
                         Aucune séance disponible pour l'instant.
                     {% endif %}
