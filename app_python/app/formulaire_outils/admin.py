@@ -29,20 +29,6 @@ class CategoriesAdmin(ImportExportModelAdmin):
     resource_class = CategoriesResource
 
 
-
-class OutilsAdmin(ImportExportModelAdmin):
-    resource_class = OutilsResource
-    actions = ['pdf_export']
-    @admin.action(description='Exporter les outils selectionnés en PDF')
-    def pdf_export(modelAdmin, request, queryset):
-        selected = queryset.values_list('id', flat=True)
-        ct = ContentType.objects.get_for_model(queryset.model)
-        return HttpResponseRedirect('/export/%s/' % (
-            ','.join(str(id) for id in selected),
-        ))
-
-
-
 class MediaAdmin(ImportExportModelAdmin):
     resource_class = MediaResource
 
@@ -53,6 +39,16 @@ class GroupeAdmin(ImportExportModelAdmin):
 
 
 class OutilsAdmin(ImportExportModelAdmin):
+
+    resource_class = OutilsResource
+    actions = ['pdf_export']
+    @admin.action(description='Exporter les outils selectionnés en PDF')
+    def pdf_export(modelAdmin, request, queryset):
+        selected = queryset.values_list('id', flat=True)
+        ct = ContentType.objects.get_for_model(queryset.model)
+        return HttpResponseRedirect('/export/%s/' % (
+            ','.join(str(id) for id in selected),
+        ))
     list_display = ('nom_func',
                     'nombre',
                     'nombre_hs',
