@@ -36,7 +36,7 @@ Lancement de l'application via docker :
 
 `docker-compose -f docker-compose-deploy up --build`
 <br>
-`docker exec -it app_python_app_1 ./manage.py createsuperuser`
+`docker exec -it app_python_app_1 python3 manage.py createsuperuser`
 
 Accessible à http://0.0.0.0
 Partie admin accessible à http://0.0.0.0/admin
@@ -50,6 +50,9 @@ Déploiement de l'application sur un serveur distant via ansible + docker :
 4/ Lancer le playbook.<br>
 
 `ansible-playbook -i hosts playbook.yml`
+
+Depuis la machine ou tourne les conteneurs docker :
+`docker exec -it app_python_app_1 python3 manage.py createsuperuser`
 
 Accessible à http://[IP_DISTANTE]
 Partie admin accessible à http://[IP_DISTANTE]/admin
