@@ -1,99 +1,52 @@
-# site du Lab
+# Site internet Lab Ouest
 
-Bienvenue sur le dépôt gitlab du site internet du Labouest le fablab de la Roche-sur-Yon.
-
-L'idée est de créer un ensemble d'outils pour automatiser, centraliser et aider à la gestion du lieu à travers son site internet.
-
-Un des premier objectif et de créer un formulaire pour l'invertaire d'outils présents dans le lieux.
-
-Par la suite on peut créer un autre formulaire pour les fraises des CNC
-
-on pourrait aussi faire le site du lab
-
-pour faire fonctionné le projet en local il faut faire un venv pip avec les `requirements.txt` et les `localrequirement.txt` d'installé
-il faut aussi définire une variable d'environement : `DEBUG` a true pour que le debug et les host soit correctement activé
-
-la secrete key est généré automatiquement
-
-pour run le serveur tout se fait avec le fichier `manage.py`
-la 1er fois il faut lancer la commande `./manage.py createsuperuser` pour crées un admin
-puis faire `./manage.py makemigrations` et `./manage.py migrate` pour crée les migrations et les appliquer a la base de donnée _(en gros sa crées les table)_
-
-pour finir lancer le serveur avec la commande `./manage.py runserver`
-
-pour git les hooks son dans .githook (commande pour changé le chemin par defaut : `git config.core.hooksPath .githooks`)
-
-Le projet tourne aussi avec docker il faut avoir `docker` et `docker-compose` d'installer et fonctionnel pour le faire fonctionner avec.
-
-Le `docker-compose.yml` sert pour le développement il utilise la base sqlite par défaut n'a pas de proxy et fonctionne avec le debug activer
-
-Le `docker-compose-deploy.yml` sert lui a la mise en production il faut tournée l'application sans le debug utilise le proxy ngnix et une base de donnée postgress
-
-# l'arborescence:
-
-## dossier :
-
--   `app` contient les fichier source
-
--   `proxy` contient les fichier de config de nginx
-
--   `.githooks` contient les hooks a lancer avant chaque commit pour évité l'ajout de bug et monitor le niveau de test de l'application
-
--   `script` contient le script de lancement de la docker de django
-
-## les fichier :
-
--   `.gitignore` (fait sur [gitignore.io](https://www.toptal.com/developers/gitignore) ) et `.prettignore` sont des fichiers pour git et prettier pour leur dire quel fichier ignoré
-
--   `.gitlab-ci.yml` est le fichier de config des pipeline gitlab
-
--   `Dockerfile` est le fichier de config de la docker django
-
--   `setup.cfg` est le fichier de config utiliser par coverage
-
--   `localrequirement.txt` est l'ensemble des outils utiliser en local pour tester le code (prospector,bandit,coverage) utiliser pour les pré-commits
-
-    # note pour les install
-
-    pip3 install rotate-backups (a installer sur le serveur avec pip)
-
-    (install crontables)
-
-    /etc/crontab/
-
-        0 0 \* \* 0 rotate-backups
-
-    make /etc/rotate-backups.ini
-
-    ```ini
-    [/media/Labouest-backups]
-    hourly = 24
-    daily = 7
-    weekly = 4
-    monthly = 12
-    yearly = always
-    ionice = idle
-    ```
+Lancement de l'application en local :
 
 
-truc qui reste a faire :
+0/ Se positionner dans /app_python/
+1/ ajouter la variable d'environnement DEBUG=1
+2/ Python migrate pour la base de donnée
+3/ Créer un superuser pour accéder à la partie admin
+4/ Lancer le serveur
 
-- debug la page de profil (cleanup le template)
-- cleanup la galerie d'atelier
-- le gitlab CI/CD
-- pouvoir changer le mdp user dans localuser
+export DEBUG=1
+./app/manage.py migrate 
+./app/manage.py createsuperuser
+./app/manage.py runserver
+
+Accessible à http://127.0.0.1:8000
+
+Lancement de l'application via docker : 
+
+0/ Se positionner dans /app_python/
+1/ Remplir un .env tel que :
+DB_NAME=postgres
+DB_USER=postgres
+DB_PASS=
+SECRET_KEY=
+ALLOWED_HOSTS=localhost,*
+
+2/ Lancer le docker-compose-deploy
+3/ faire un docker exec sur le conteneur de l'application pour la création d'un superuser
+
+docker-compose -f docker-compose-deploy up --build
+docker exec -it app_python_app_1 ./manage.py createsuperuser
+
+Accessible à http://0.0.0.0
+
+Déploiement de l'application sur un serveur distant via ansible + docker :
+
+1/ Il faut également ajouter un .env dans /app_python/ tel que précedement.
+2/ Se positionner dans /ansible/
+3/ Modifier le fichier hosts avec les informations de votre machine distante. (IP, USER & MDP)
+4/ Lancer le playbook.
+
+ansible-playbook -i hosts playbook.yml
+
+Accessible à http://[IP_DISTANTE]
 
 
-mettre prix atelier
 
-mettre les date du calendrier en français
 
-rassemblé bulletin d'adhésion et tarrif dans la même page
 
-dans template image galerie metttre titre des images plus grand
 
-dans session disponible mettre nombre de session dans le tableaux
-
-si tes inscrit a une séance faire en sorte qu'il ne puisse pas s'inscrire au autre
-
-chagé le qrcode de mort d'aubin
